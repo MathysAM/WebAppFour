@@ -17,14 +17,17 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
+      # <-- CI / Build dans le dossier qui contient TON .csproj -->
       - name: Restore & Publish
+        working-directory: Blazzor/WebAppFour/Four
         run: |
           dotnet restore
           dotnet publish -c Release -o publish
 
+      # <-- On déploie ce qui est généré dans publish/wwwroot -->
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: publish/wwwroot
+          publish_dir: Blazzor/WebAppFour/Four/publish/wwwroot
           destination_branch: gh-pages
