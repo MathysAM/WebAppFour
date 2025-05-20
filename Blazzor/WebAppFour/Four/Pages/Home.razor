@@ -32,6 +32,10 @@
                 @: Connecter
             }
         </button>
+
+        <button class="btn btn-success me-2" @onclick="PublishStart">▶️ Start</button>
+        <button class="btn btn-danger" @onclick="PublishStop">⏹️ Stop</button>
+
     </EditForm>
 
     @if (errorMessage is not null)
@@ -108,5 +112,15 @@ else
     public void Dispose()
     {
         dotNetRef?.Dispose();
+    }
+
+    private async Task PublishStart()
+    {
+        await JS.InvokeVoidAsync("publishMomentary", "/Sup/Start");
+    }
+
+    private async Task PublishStop()
+    {
+        await JS.InvokeVoidAsync("publishMomentary", "/Sup/Stop");
     }
 }
