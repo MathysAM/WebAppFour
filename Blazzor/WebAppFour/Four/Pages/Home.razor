@@ -72,12 +72,12 @@ else
         try
         {
             await JS.InvokeVoidAsync(
-                "connectMqtt",
-                "wss://4d1f194df18748a393eeabb274d5e439.s1.eu.hivemq.cloud:8886/mqtt",
-                credentials.UserName,
-                credentials.Password,
-                dotNetRef
-            );
+                 "connectMqtt",
+                 "wss://4d1f194df18748a393eeabb274d5e439.s1.eu.hivemq.cloud:8884/mqtt",
+                    credentials.UserName,
+                   credentials.Password,
+                    dotNetRef
+                  );
             // on attend le callback JS pour NotifyMqttConnected ou NotifyMqttError
         }
         catch (JSException jsEx)

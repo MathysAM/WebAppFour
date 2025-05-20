@@ -1,8 +1,10 @@
-// mqtt.js – version sans import, compatible GitHub Pages
 window.connectMqtt = (brokerUrl, user, pass, dotNetHelper) => {
   const client = mqtt.connect(brokerUrl, {
+    clientId: 'webapp_' + Math.random().toString(16).substr(2, 8),
     username: user,
-    password: pass
+    password: pass,
+    clean: true,
+    reconnectPeriod: 0
   });
 
   client.on('connect', () => {
