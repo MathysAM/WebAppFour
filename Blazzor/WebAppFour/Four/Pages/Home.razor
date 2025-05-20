@@ -33,8 +33,7 @@
             }
         </button>
 
-        <button class="btn btn-success me-2" @onclick="PublishStart">▶️ Start</button>
-        <button class="btn btn-danger" @onclick="PublishStop">⏹️ Stop</button>
+    
 
     </EditForm>
 
@@ -48,6 +47,8 @@ else
     <h1>Bienvenue, @credentials.UserName !</h1>
     <p style="color:green"><strong>MQTT connecté ✔️</strong></p>
     @* …ici tu pourras ajouter tes boutons Publish/Subscribe… *@
+    <button class="btn btn-success me-2" @onclick="PublishStart">▶️ Start</button>
+    <button class="btn btn-danger" @onclick="PublishStop">⏹️ Stop</button>
 }
 
 @code {
