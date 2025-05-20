@@ -1,7 +1,112 @@
 ﻿@page "/"
+@using System.ComponentModel.DataAnnotations
+@implements IDisposable
+@inject IJSRuntime JS
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, ld!</h1>
+@if (!isConnected)
+{
+    <h3>Connexion MQTT</h3>
 
-Welcome to your new app.
+    <EditForm Model="credentials" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Utilisateur</label>
+            <InputText class="form-control" @bind-Value="credentials.UserName" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mot de passe</label>
+            <InputText type="password" class="form-control" @bind-Value="credentials.Password" />
+        </div>
+        <button class="btn btn-primary" disabled="@isConnecting">
+            @if (isConnecting)
+            {
+                <span class="spinner-border spinner-border-sm"></span>
+                @: Connexion...
+        }
+            else
+            {
+                @: Connecter
+            }
+        </button>
+    </EditForm>
+
+    @if (errorMessage is not null)
+    {
+        <div class="alert alert-danger mt-3">@errorMessage</div>
+    }
+}
+else
+{
+    <h1>Bienvenue, @credentials.UserName !</h1>
+    <p style="color:green"><strong>MQTT connecté ✔️</strong></p>
+    @* …ici tu pourras ajouter tes boutons Publish/Subscribe… *@
+}
+
+@code {
+    private class Credentials
+    {
+        [Required] public string? UserName { get; set; }
+        [Required] public string? Password { get; set; }
+    }
+
+    private Credentials credentials = new();
+    private bool isConnecting;
+    private bool isConnected;
+    private string? errorMessage;
+    private DotNetObjectReference<Home>? dotNetRef;
+
+    protected override void OnInitialized()
+    {
+        dotNetRef = DotNetObjectReference.Create(this);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        isConnecting = true;
+        errorMessage = null;
+
+        try
+        {
+            await JS.InvokeVoidAsync(
+                "connectMqtt",
+                "wss://4d1f194df18748a393eeabb274d5e439.s1.eu.hivemq.cloud:8886/mqtt",
+                credentials.UserName,
+                credentials.Password,
+                dotNetRef
+            );
+            // on attend le callback JS pour NotifyMqttConnected ou NotifyMqttError
+        }
+        catch (JSException jsEx)
+        {
+            errorMessage = $"Erreur JS : {jsEx.Message}";
+            isConnecting = false;
+        }
+    }
+
+    [JSInvokable]
+    public Task NotifyMqttConnected()
+    {
+        isConnecting = false;
+        isConnected = true;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    [JSInvokable]
+    public Task NotifyMqttError(string message)
+    {
+        errorMessage = $"MQTT Erreur : {message}";
+        isConnecting = false;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    public void Dispose()
+    {
+        dotNetRef?.Dispose();
+    }
+}
