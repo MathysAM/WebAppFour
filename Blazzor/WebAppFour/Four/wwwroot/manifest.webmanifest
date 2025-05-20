@@ -1,8 +1,7 @@
 {
   "name": "Four",
   "short_name": "Four",
-  "id": "./",
-  "start_url": "./",
+  "start_url": "/WebAppFour/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
