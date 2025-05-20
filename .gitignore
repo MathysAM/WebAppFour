@@ -1,0 +1,35 @@
+# Fichiers binaires et dossiers de build
+/bin/
+/obj/
+/publish/
+/wwwroot/**/*.deploy/
+*.dll
+*.exe
+*.pdb
+
+# Dossiers spécifiques à Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Répertoires de packages NuGet et caches
+*.nupkg
+packages/
+.nuget/
+
+# Fichiers de logs et d’état local
+*.log
+local.settings.json
+
+# JetBrains Rider
+.idea/
+
+# Mac
+.DS_Store
+
+# Node / npm (si tu utilises npm pour le front)
+node_modules/
+npm-debug.log*
+package-lock.json

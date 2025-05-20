@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\yfoey1l9l6.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Four.styles.css",
+      "PackagePath": "staticwebassets\\Four.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\service-worker-assets.js",
+      "PackagePath": "staticwebassets\\service-worker-assets.js"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\service-worker\\service-worker.published.js",
+      "PackagePath": "staticwebassets\\service-worker.js"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\icon-512.png",
+      "PackagePath": "staticwebassets\\icon-512.png"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\manifest.webmanifest",
+      "PackagePath": "staticwebassets\\manifest.webmanifest"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Four.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Four.props",
+      "PackagePath": "build\\Four.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Four.props",
+      "PackagePath": "buildMultiTargeting\\Four.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Four.props",
+      "PackagePath": "buildTransitive\\Four.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
