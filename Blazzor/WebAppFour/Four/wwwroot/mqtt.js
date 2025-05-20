@@ -1,6 +1,4 @@
-// wwwroot/mqtt.js
-import mqtt from 'https://cdn.skypack.dev/mqtt';
-
+// mqtt.js – version sans import, compatible GitHub Pages
 window.connectMqtt = (brokerUrl, user, pass, dotNetHelper) => {
   const client = mqtt.connect(brokerUrl, {
     username: user,
