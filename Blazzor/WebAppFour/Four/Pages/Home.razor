@@ -1,7 +1,9 @@
 ﻿@page "/"
 @using System.ComponentModel.DataAnnotations
+@using Four.Services
 @implements IDisposable
 @inject IJSRuntime JS
+@inject MqttService MqttService
 
 <PageTitle>Home</PageTitle>
 
@@ -66,7 +68,10 @@ else
 
     protected override void OnInitialized()
     {
+        
         dotNetRef = DotNetObjectReference.Create(this);
+        MqttService.DotNetRef = dotNetRef;
+        isConnected = MqttService.IsConnected;
     }
 
     private async Task HandleValidSubmit()
@@ -97,6 +102,7 @@ else
     {
         isConnecting = false;
         isConnected = true;
+        MqttService.SetConnected(true);
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -106,6 +112,8 @@ else
     {
         errorMessage = $"MQTT Erreur : {message}";
         isConnecting = false;
+        isConnected = false;
+        MqttService.SetConnected(false);
         StateHasChanged();
         return Task.CompletedTask;
     }

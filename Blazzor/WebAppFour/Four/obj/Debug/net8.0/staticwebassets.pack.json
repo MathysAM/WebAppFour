@@ -1,59 +1,63 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\yfoey1l9l6.gz",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\yfoey1l9l6.gz",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Four.styles.css",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Four.styles.css",
       "PackagePath": "staticwebassets\\Four.styles.css"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\service-worker-assets.js",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\service-worker-assets.js",
       "PackagePath": "staticwebassets\\service-worker-assets.js"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\service-worker\\service-worker.published.js",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\service-worker\\service-worker.published.js",
       "PackagePath": "staticwebassets\\service-worker.js"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\app.css",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\icon-192.png",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\icon-512.png",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\icon-512.png",
       "PackagePath": "staticwebassets\\icon-512.png"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\index.html",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\manifest.webmanifest",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\manifest.webmanifest",
       "PackagePath": "staticwebassets\\manifest.webmanifest"
     },
     {
-      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Blazzor\\WebAppFour\\Four\\wwwroot\\sample-data\\weather.json",
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\mqtt.js",
+      "PackagePath": "staticwebassets\\mqtt.js"
+    },
+    {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },
     {
