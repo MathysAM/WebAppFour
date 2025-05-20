@@ -1,5 +1,10 @@
 name: Deploy Blazor WASM to GitHub Pages
 
+# 1) On donne les permissions nécessaires au GITHUB_TOKEN
+permissions:
+  contents: write    # pour pouvoir créer la branche gh-pages
+  pages: write       # si vous comptez utiliser GitHub Pages API
+
 on:
   push:
     branches: [ main ]
@@ -9,25 +14,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # 2) On clone le repo
+      - uses: actions/checkout@v3
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+      # 3) On installe .NET
+      - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
 
-      # <-- CI / Build dans le dossier qui contient TON .csproj -->
+      # 4) On build & publie (adaptez le working-directory à votre .csproj)
       - name: Restore & Publish
         working-directory: Blazzor/WebAppFour/Four
         run: |
           dotnet restore
           dotnet publish -c Release -o publish
 
-      # <-- On déploie ce qui est généré dans publish/wwwroot -->
+      # 5) On déploie sur la branche gh-pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages                 # <-- remplace destination_branch
           publish_dir: Blazzor/WebAppFour/Four/publish/wwwroot
-          destination_branch: gh-pages
+          force_orphan: true                       # (optionnel) recrée la branche à zéro
