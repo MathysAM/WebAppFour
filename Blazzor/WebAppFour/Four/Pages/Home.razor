@@ -5,60 +5,57 @@
 @inject IJSRuntime JS
 @inject MqttService MqttService
 
-
 <PageTitle>Home</PageTitle>
-<h3>Connexion</h3>
 
-<EditForm Model="credentials" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+<article class="content px-4">
+    <h3 class="mt-4">Connexion MQTT</h3>
 
-    <div class="mb-3">
-        <label class="form-label">Utilisateur</label>
-        <InputText class="form-control" @bind-Value="credentials.UserName" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Mot de passe</label>
-        <InputText type="password" class="form-control" @bind-Value="credentials.Password" />
-    </div>
-    <button class="btn btn-primary" disabled="@isConnecting">
-        @if (isConnecting)
-        {
-            <span class="spinner-border spinner-border-sm"></span>
-            @: Connexion...
+    <EditForm Model="credentials" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Utilisateur</label>
+            <InputText class="form-control" @bind-Value="credentials.UserName" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mot de passe</label>
+            <InputText type="password" class="form-control" @bind-Value="credentials.Password" />
+        </div>
+        <button type="submit" class="btn btn-primary" disabled="@isWorking">
+            @if (isWorking)
+            {
+                <span class="spinner-border spinner-border-sm"></span>
+                @:&nbsp; Connexion...
+            }
+            else
+            {
+                @:Connexion
+            }
+        </button>
+    </EditForm>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger mt-3">@errorMessage</div>
+    }
+
+    @if (MqttService.IsConnected)
+    {
+        <h1 class="mt-5">Bienvenue, @MqttService.Username !</h1>
+        <button class="btn btn-danger mt-3" @onclick="HandleDisconnect" disabled="@isWorking">
+            @if (isWorking)
+            {
+                <span class="spinner-border spinner-border-sm"></span>
+                @:&nbsp; Déconnexion...
         }
-        else
-        {
-            @: Connecter
-        }
-    </button>
-
-
-
-</EditForm>
-
-@if (errorMessage is not null)
-{
-    <div class="alert alert-danger mt-3">@errorMessage</div>
-}
-@if (isConnected)
-{
-    <h1 style="margin-top: 20px;">Bienvenue, @NomUtilisateur !</h1>
-   
-    @* …ici tu pourras ajouter tes boutons Publish/Subscribe… *@
-    <button class="btn btn-danger mt-3" @onclick="HandleDisconnect" disabled="@isConnecting">
-        @if (isConnecting)
-        {
-            <span class="spinner-border spinner-border-sm"></span>
-            @: Déconnexion...
-        }
-        else
-        {
-            @: Déconnecter
-        }
-    </button>
-}
-
+            else
+            {
+                @:Déconnecter
+            }
+        </button>
+    }
+</article>
 
 @code {
     private class Credentials
@@ -68,60 +65,41 @@
     }
 
     private Credentials credentials = new();
-    private bool isConnecting;
-    private bool isConnected;
+    private bool isWorking;
     private string? errorMessage;
-    private DotNetObjectReference<Home>? dotNetRef;
-
-    private string NomUtilisateur="";
 
     protected override void OnInitialized()
     {
-
-        dotNetRef = DotNetObjectReference.Create(this);
-        MqttService.DotNetRef = dotNetRef;
-        isConnected = MqttService.IsConnected;
-        if (isConnected)
+        MqttService.OnConnectionChanged += StateHasChanged;
+        MqttService.OnError += msg =>
         {
-            NomUtilisateur = MqttService.Username;
-        }
+            errorMessage = msg;
+            StateHasChanged();
+        };
     }
 
     private async Task HandleValidSubmit()
     {
-        isConnecting = true;
+        isWorking = true;
         errorMessage = null;
 
-
-
-        try
-        {
-            await JS.InvokeVoidAsync(
-                 "connectMqtt",
-                 "wss://4d1f194df18748a393eeabb274d5e439.s1.eu.hivemq.cloud:8884/mqtt",
-                    credentials.UserName,
-                   credentials.Password,
-                    dotNetRef
-                  );
-            // on attend le callback JS pour NotifyMqttConnected ou NotifyMqttError
-        }
-        catch (JSException jsEx)
-        {
-            errorMessage = $"Erreur JS : {jsEx.Message}";
-            isConnecting = false;
-        }
+        await JS.InvokeVoidAsync(
+            "connectMqtt",
+            "wss://4d1f194df18748a393eeabb274d5e439.s1.eu.hivemq.cloud:8884/mqtt",
+            credentials.UserName!,
+            credentials.Password!,
+            DotNetObjectReference.Create(this)
+        );
+        // On attend ensuite le JS qui appellera NotifyMqttConnected ou NotifyMqttError
     }
 
     [JSInvokable]
     public Task NotifyMqttConnected()
     {
-        NomUtilisateur = credentials.UserName;
-        credentials.UserName = "";
-        credentials.Password = "";
-        isConnecting = false;
-        isConnected = true;
+        isWorking = false;
         MqttService.SetConnected(true);
-        MqttService.SetUsername(NomUtilisateur);
+        MqttService.SetUsername(credentials.UserName!);
+        credentials = new Credentials(); // vide les champs
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -129,12 +107,8 @@
     [JSInvokable]
     public Task NotifyMqttDisconnected()
     {
-        // on remet l’état de la page
-        isConnecting = false;
-        isConnected = false;
+        isWorking = false;
         MqttService.SetConnected(false);
-
-        // pour rafraîchir le rendu
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -143,8 +117,7 @@
     public Task NotifyMqttError(string message)
     {
         errorMessage = $"MQTT Erreur : {message}";
-        isConnecting = false;
-        isConnected = false;
+        isWorking = false;
         MqttService.SetConnected(false);
         StateHasChanged();
         return Task.CompletedTask;
@@ -152,26 +125,15 @@
 
     private async Task HandleDisconnect()
     {
-        isConnecting = true;    // Pour afficher le spinner si besoin
+        isWorking = true;
         errorMessage = null;
-
-        try
-        {
-            // Appelle la fonction JS qui déconnecte le client MQTT
-            await JS.InvokeVoidAsync("disconnectMqtt");
-            // La mise à jour réelle de isConnected se fera dans le callback NotifyMqttDisconnected
-        }
-        catch (JSException jsEx)
-        {
-            errorMessage = $"Erreur JS lors de la déconnexion : {jsEx.Message}";
-            isConnecting = false;
-        }
+        await JS.InvokeVoidAsync("disconnectMqtt");
+        // Le callback JS exécutera NotifyMqttDisconnected
     }
 
     public void Dispose()
     {
-        dotNetRef?.Dispose();
+        MqttService.OnConnectionChanged -= StateHasChanged;
+        MqttService.OnError -= msg => { errorMessage = msg; StateHasChanged(); };
     }
-
- 
 }
