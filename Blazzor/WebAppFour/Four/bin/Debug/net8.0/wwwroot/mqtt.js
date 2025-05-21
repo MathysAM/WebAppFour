@@ -6,7 +6,9 @@ window.connectMqtt = (brokerUrl, user, pass, dotNetHelper) => {
     clean: true,
     reconnectPeriod: 0
   });
-
+    // expose le client et le helper dans le scope global
+    window.mqttClient = client;
+    window.dotNetHelper = dotNetHelper;
   client.on('connect', () => {
     console.log('✅ MQTT connecté');
     dotNetHelper.invokeMethodAsync('NotifyMqttConnected');
@@ -17,9 +19,20 @@ window.connectMqtt = (brokerUrl, user, pass, dotNetHelper) => {
     dotNetHelper.invokeMethodAsync('NotifyMqttError', err.message);
   });
 
-  window.mqttClient = client;
 };
+window.disconnectMqtt = () => {
+    if (window.mqttClient) {
+        window.mqttClient.end(false, () => {
+            // on notifie Blazor que c’est fini
+            window.dotNetHelper.invokeMethodAsync('NotifyMqttDisconnected')
+                .catch(console.error);
 
+            // cleanup
+            window.mqttClient = null;
+            window.dotNetHelper = null;
+        });
+    }
+};
 window.publishMomentary = async function (topic) {
     if (!window.mqttClient || !window.mqttClient.connected) {
         console.error("MQTT non connecté !");
