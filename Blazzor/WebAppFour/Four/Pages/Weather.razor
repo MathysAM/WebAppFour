@@ -150,12 +150,13 @@ else
 
     private async Task PublishDayActive(int index)
     {
+        if (index < 0 || index >= days.Count) return;
         await JS.InvokeVoidAsync("publishMqtt", $"/Prog/{index}/Active", days[index].IsActive.ToString().ToLower());
     }
 
     private void ValidateTime(int index)
     {
-        if (index >= days.Count) return;
+        if (index < 0 || index >= days.Count) return;
 
         var day = days[index];
         int start = day.StartHour * 60 + day.StartMinute;
@@ -176,16 +177,43 @@ else
         }
     }
 
-    [JSInvokable] public void SetDayActive(string value, int index) => ApplyUpdate(() => days[index].IsActive = value == "true");
-    [JSInvokable] public void SetStartHour(string value, int index) => ApplyUpdate(() => days[index].StartHour = int.Parse(value));
-    [JSInvokable] public void SetStartMinute(string value, int index) => ApplyUpdate(() => days[index].StartMinute = int.Parse(value));
-    [JSInvokable] public void SetStopHour(string value, int index) => ApplyUpdate(() => days[index].StopHour = int.Parse(value));
-    [JSInvokable] public void SetStopMinute(string value, int index) => ApplyUpdate(() => days[index].StopMinute = int.Parse(value));
-
-    private void ApplyUpdate(Action update)
+    [JSInvokable]
+    public void SetDayActive(string value, int index)
     {
-        if (days.Count < 7) return;
-        update();
+        if (index < 0 || index >= days.Count) return;
+        days[index].IsActive = value == "true";
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public void SetStartHour(string value, int index)
+    {
+        if (index < 0 || index >= days.Count) return;
+        days[index].StartHour = int.Parse(value);
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public void SetStartMinute(string value, int index)
+    {
+        if (index < 0 || index >= days.Count) return;
+        days[index].StartMinute = int.Parse(value);
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public void SetStopHour(string value, int index)
+    {
+        if (index < 0 || index >= days.Count) return;
+        days[index].StopHour = int.Parse(value);
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public void SetStopMinute(string value, int index)
+    {
+        if (index < 0 || index >= days.Count) return;
+        days[index].StopMinute = int.Parse(value);
         StateHasChanged();
     }
 }
