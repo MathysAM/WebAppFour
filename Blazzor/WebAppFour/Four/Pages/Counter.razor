@@ -1,18 +1,22 @@
 ﻿@page "/counter"
+@inject IJSRuntime JS
 
 <PageTitle>Counter</PageTitle>
 
-<h1>Counter</h1>
 
-<p role="status">Current count: @currentCount</p>
+<button class="btn btn-success me-2" @onclick="PublishStart">▶️ Start</button>
+<button class="btn btn-danger" @onclick="PublishStop">⏹️ Stop</button>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
+  
+    private async Task PublishStart()
     {
-        currentCount++;
+        await JS.InvokeVoidAsync("publishMomentary", "/Sup/Start");
+    }
+
+    private async Task PublishStop()
+    {
+        await JS.InvokeVoidAsync("publishMomentary", "/Sup/Stop");
     }
 }
