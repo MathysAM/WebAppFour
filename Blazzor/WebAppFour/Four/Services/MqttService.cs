@@ -8,8 +8,12 @@ namespace Four.Services // adapte au nom réel de ton projet si différent
         public bool IsConnected { get; private set; }
         public DotNetObjectReference<Home>? DotNetRef { get; set; }
 
-
-        public void SetConnected(bool value) => IsConnected = value;
+        public event Action? OnConnectionChanged;
+        public void SetConnected(bool value)
+        {
+            IsConnected = value;
+            OnConnectionChanged?.Invoke();
+        }
 
         public void Clear()
         {

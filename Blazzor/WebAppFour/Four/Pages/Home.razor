@@ -4,7 +4,7 @@
 @implements IDisposable
 @inject IJSRuntime JS
 @inject MqttService MqttService
-@inject NavigationManager Nav
+
 
 <PageTitle>Home</PageTitle>
 
@@ -104,7 +104,7 @@ else
         isConnecting = false;
         isConnected = true;
         MqttService.SetConnected(true);
-        Nav.NavigateTo(Nav.Uri, forceLoad: true);
+        
         StateHasChanged();
         return Task.CompletedTask;
     }

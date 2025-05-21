@@ -43,4 +43,18 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
+    protected override void OnInitialized()
+    {
+        MqttService.OnConnectionChanged += OnConnectionChanged;
+    }
+
+    private void OnConnectionChanged()
+    {
+        InvokeAsync(StateHasChanged); // Mise à jour du composant
+    }
+
+    public void Dispose()
+    {
+        MqttService.OnConnectionChanged -= OnConnectionChanged;
+    }
 }
