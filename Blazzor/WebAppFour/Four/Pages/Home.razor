@@ -115,6 +115,18 @@
         return Task.CompletedTask;
     }
 
+    public Task NotifyMqttDisconnected()
+    {
+        // on remet l’état de la page
+        isConnecting = false;
+        isConnected = false;
+        MqttService.SetConnected(false);
+
+        // pour rafraîchir le rendu
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
     [JSInvokable]
     public Task NotifyMqttError(string message)
     {
