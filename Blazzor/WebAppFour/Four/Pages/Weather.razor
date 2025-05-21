@@ -128,17 +128,10 @@ else
     {
         try
         {
+            days.Clear();
             for (int i = 0; i < 7; i++)
             {
-                int indexCopy = i;
-                var day = new DaySchedule
-                    {
-                        Index = i,
-                        DayName = dayNames[i],
-                        OnTimeChanged = () => ValidateTime(indexCopy),
-                        OnActiveChanged = async (idx) => await PublishDayActive(idx)
-                    };
-                days.Add(day);
+                days.Add(CreateDaySchedule(i));
 
                 var dotnetRef = DotNetObjectReference.Create(this);
                 await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/Active", dotnetRef, "SetDayActive", i);
@@ -153,7 +146,18 @@ else
             Console.WriteLine($"[JS Error] {ex.Message}");
         }
 
-        StateHasChanged(); // Pour rendre uniquement après la fin de la boucle
+        StateHasChanged();
+    }
+
+    private DaySchedule CreateDaySchedule(int index)
+    {
+        return new DaySchedule
+            {
+                Index = index,
+                DayName = dayNames[index],
+                OnTimeChanged = () => ValidateTime(index),
+                OnActiveChanged = async (idx) => await PublishDayActive(idx)
+            };
     }
 
     private async Task PublishDayActive(int index)
