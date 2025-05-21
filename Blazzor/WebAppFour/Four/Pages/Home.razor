@@ -8,7 +8,7 @@
 <PageTitle>Home</PageTitle>
 
 <article class="content px-4">
-    <h3 class="mt-4">Connexion MQTT</h3>
+    <h3 class="mt-4">Connexion</h3>
 
     <EditForm Model="credentials" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
@@ -18,15 +18,17 @@
             <label class="form-label">Utilisateur</label>
             <InputText class="form-control" @bind-Value="credentials.UserName" />
         </div>
+
         <div class="mb-3">
             <label class="form-label">Mot de passe</label>
             <InputText type="password" class="form-control" @bind-Value="credentials.Password" />
         </div>
+
         <button type="submit" class="btn btn-primary" disabled="@isWorking">
             @if (isWorking)
             {
                 <span class="spinner-border spinner-border-sm"></span>
-                @:&nbsp; Connexion...
+                @:&nbsp;Connexion...
             }
             else
             {
@@ -43,12 +45,14 @@
     @if (MqttService.IsConnected)
     {
         <h1 class="mt-5">Bienvenue, @MqttService.Username !</h1>
-        <button class="btn btn-danger mt-3" @onclick="HandleDisconnect" disabled="@isWorking">
+        <button class="btn btn-danger mt-3"
+                @onclick="HandleDisconnect"
+                disabled="@isWorking">
             @if (isWorking)
             {
                 <span class="spinner-border spinner-border-sm"></span>
-                @:&nbsp; Déconnexion...
-        }
+                @:&nbsp;Déconnexion...
+            }
             else
             {
                 @:Déconnecter
@@ -67,9 +71,14 @@
     private Credentials credentials = new();
     private bool isWorking;
     private string? errorMessage;
+    private DotNetObjectReference<Home>? dotNetRef;
 
     protected override void OnInitialized()
     {
+        // Crée la référence une seule fois
+        dotNetRef = DotNetObjectReference.Create(this);
+
+        // Abonnement aux événements du service
         MqttService.OnConnectionChanged += StateHasChanged;
         MqttService.OnError += msg =>
         {
@@ -88,9 +97,9 @@
             "wss://4d1f194df18748a393eeabb274d5e439.s1.eu.hivemq.cloud:8884/mqtt",
             credentials.UserName!,
             credentials.Password!,
-            DotNetObjectReference.Create(this)
+            dotNetRef
         );
-        // On attend ensuite le JS qui appellera NotifyMqttConnected ou NotifyMqttError
+        // Le spinner s'arrêtera dans NotifyMqttConnected ou NotifyMqttError
     }
 
     [JSInvokable]
@@ -99,7 +108,7 @@
         isWorking = false;
         MqttService.SetConnected(true);
         MqttService.SetUsername(credentials.UserName!);
-        credentials = new Credentials(); // vide les champs
+        credentials = new Credentials(); // vide le formulaire
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -107,7 +116,7 @@
     [JSInvokable]
     public Task NotifyMqttDisconnected()
     {
-        isWorking = false;
+        isWorking = false;  // important pour enlever le spinner du bouton Connexion
         MqttService.SetConnected(false);
         StateHasChanged();
         return Task.CompletedTask;
@@ -128,12 +137,14 @@
         isWorking = true;
         errorMessage = null;
         await JS.InvokeVoidAsync("disconnectMqtt");
-        // Le callback JS exécutera NotifyMqttDisconnected
+        // NotifyMqttDisconnected s'exécutera ensuite
     }
 
     public void Dispose()
     {
+        // Désabonnement et cleanup
         MqttService.OnConnectionChanged -= StateHasChanged;
         MqttService.OnError -= msg => { errorMessage = msg; StateHasChanged(); };
+        dotNetRef?.Dispose();
     }
 }
