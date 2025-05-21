@@ -74,13 +74,20 @@
 
     protected override void OnInitialized()
     {
-        MqttService.OnConnectionChanged += StateHasChanged;
+        MqttService.OnConnectionChanged += OnMqttStateChanged;
         MqttService.OnError += HandleError;
+    }
+
+    private void OnMqttStateChanged()
+    {
+        isWorking = false;
+        StateHasChanged();
     }
 
     private void HandleError(string msg)
     {
         errorMessage = msg;
+        isWorking = false;
         StateHasChanged();
     }
 
@@ -88,16 +95,11 @@
     {
         isWorking = true;
         errorMessage = null;
-
         await MqttService.ConnectAsync(
             "wss://4d1f194df18748a393eeabb274d5e439.s1.eu.hivemq.cloud:8884/mqtt",
             credentials.UserName!,
             credentials.Password!
         );
-
-        // JS exécutera ensuite les callbacks sur le service,
-        // qui vont déclencher OnConnectionChanged (=> StateHasChanged)
-        // et arrêter le spinner via NotifyMqttConnected ou NotifyMqttError.
     }
 
     private async Task HandleDisconnect()
@@ -105,12 +107,11 @@
         isWorking = true;
         errorMessage = null;
         await MqttService.DisconnectAsync();
-        // NotifyMqttDisconnected sur service lèvera OnConnectionChanged.
     }
 
     public void Dispose()
     {
-        MqttService.OnConnectionChanged -= StateHasChanged;
+        MqttService.OnConnectionChanged -= OnMqttStateChanged;
         MqttService.OnError -= HandleError;
     }
-}
+} 
