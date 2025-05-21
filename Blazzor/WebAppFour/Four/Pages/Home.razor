@@ -43,7 +43,7 @@
 }
 @if (isConnected)
 {
-    <h1>Bienvenue, @credentials.UserName !</h1>
+    <h1>Bienvenue, @NomUtilisateur !</h1>
     <p style="color:green"><strong>MQTT connecté ✔️</strong></p>
     @* …ici tu pourras ajouter tes boutons Publish/Subscribe… *@
     <button class="btn btn-danger mt-3" @onclick="HandleDisconnect" disabled="@isConnecting">
@@ -73,9 +73,11 @@
     private string? errorMessage;
     private DotNetObjectReference<Home>? dotNetRef;
 
+    private string NomUtilisateur="";
+
     protected override void OnInitialized()
     {
-        
+
         dotNetRef = DotNetObjectReference.Create(this);
         MqttService.DotNetRef = dotNetRef;
         isConnected = MqttService.IsConnected;
@@ -85,6 +87,8 @@
     {
         isConnecting = true;
         errorMessage = null;
+
+
 
         try
         {
@@ -107,6 +111,9 @@
     [JSInvokable]
     public Task NotifyMqttConnected()
     {
+        NomUtilisateur = credentials.UserName;
+        credentials.UserName = "";
+        credentials.Password = "";
         isConnecting = false;
         isConnected = true;
         MqttService.SetConnected(true);
