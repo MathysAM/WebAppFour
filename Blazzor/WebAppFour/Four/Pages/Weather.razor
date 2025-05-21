@@ -5,63 +5,63 @@
 
 <h3 class="mb-4">Programmation journalière</h3>
 
-@if (days.Count < 7)
+@if (days.Count >= 7)
 {
-    <p>Chargement en cours...</p>
+@for (int i = 0; i < 7; i++)
+{
+    <div class="mb-4 border p-3 rounded">
+        <label class="form-check-label">
+            <input type="checkbox"
+                   class="form-check-input me-2"
+                   @bind="days[i].IsActive"
+                   @bind:event="onchange" />
+            @days[i].DayName
+        </label>
+
+        <div class="row mt-2">
+            <div class="col">
+                <label>Heure de démarrage</label>
+                <select class="form-select" @bind="days[i].StartHour">
+                    @for (int h = 0; h < 24; h++)
+                    {
+                        <option value="@h">@($"{h:D2}")</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <label>Minute de démarrage</label>
+                <select class="form-select" @bind="days[i].StartMinute">
+                    @for (int m = 0; m < 60; m += 5)
+                    {
+                        <option value="@m">@($"{m:D2}")</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <label>Heure d'arrêt</label>
+                <select class="form-select" @bind="days[i].StopHour">
+                    @for (int h = 0; h < 24; h++)
+                    {
+                        <option value="@h">@($"{h:D2}")</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <label>Minute d'arrêt</label>
+                <select class="form-select" @bind="days[i].StopMinute">
+                    @for (int m = 0; m < 60; m += 5)
+                    {
+                        <option value="@m">@($"{m:D2}")</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+}
 }
 else
 {
-    @for (int i = 0; i < 7; i++)
-    {
-        <div class="mb-4 border p-3 rounded">
-            <label class="form-check-label">
-                <input type="checkbox"
-                       class="form-check-input me-2"
-                       @bind="days[i].IsActive"
-                       @bind:event="onchange" />
-                @days[i].DayName
-            </label>
-
-            <div class="row mt-2">
-                <div class="col">
-                    <label>Heure de démarrage</label>
-                    <select class="form-select" @bind="days[i].StartHour">
-                        @for (int h = 0; h < 24; h++)
-                        {
-                            <option value="@h">@($"{h:D2}")</option>
-                        }
-                    </select>
-                </div>
-                <div class="col">
-                    <label>Minute de démarrage</label>
-                    <select class="form-select" @bind="days[i].StartMinute">
-                        @for (int m = 0; m < 60; m += 5)
-                        {
-                            <option value="@m">@($"{m:D2}")</option>
-                        }
-                    </select>
-                </div>
-                <div class="col">
-                    <label>Heure d'arrêt</label>
-                    <select class="form-select" @bind="days[i].StopHour">
-                        @for (int h = 0; h < 24; h++)
-                        {
-                            <option value="@h">@($"{h:D2}")</option>
-                        }
-                    </select>
-                </div>
-                <div class="col">
-                    <label>Minute d'arrêt</label>
-                    <select class="form-select" @bind="days[i].StopMinute">
-                        @for (int m = 0; m < 60; m += 5)
-                        {
-                            <option value="@m">@($"{m:D2}")</option>
-                        }
-                    </select>
-                </div>
-            </div>
-        </div>
-    }
+<p>Chargement de la programmation...</p>
 }
 
 @code {
