@@ -81,7 +81,10 @@
     private void OnMqttStateChanged()
     {
         isWorking = false;
+        credentials.UserName = "";
+        credentials.Password = "";
         StateHasChanged();
+      
     }
 
     private void HandleError(string msg)
