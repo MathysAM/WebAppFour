@@ -5,57 +5,63 @@
 
 <h3 class="mb-4">Programmation journalière</h3>
 
-@for (int i = 0; i < 7; i++)
+@if (days.Count < 7)
 {
-    <div class="mb-4 border p-3 rounded">
-        <label class="form-check-label">
-            <input type="checkbox"
-                   class="form-check-input me-2"
-                   @bind="days[i].IsActive"
-                   @bind:event="onchange" />
+    <p>Chargement en cours...</p>
+}
+else
+{
+    @for (int i = 0; i < 7; i++)
+    {
+        <div class="mb-4 border p-3 rounded">
+            <label class="form-check-label">
+                <input type="checkbox"
+                       class="form-check-input me-2"
+                       @bind="days[i].IsActive"
+                       @bind:event="onchange" />
+                @days[i].DayName
+            </label>
 
-            @days[i].DayName
-        </label>
-
-        <div class="row mt-2">
-            <div class="col">
-                <label>Heure de démarrage</label>
-                <select class="form-select" @bind="days[i].StartHour">
-                    @for (int h = 0; h < 24; h++)
-                    {
-                        <option value="@h">@($"{h:D2}")</option>
-                    }
-                </select>
-            </div>
-            <div class="col">
-                <label>Minute de démarrage</label>
-                <select class="form-select" @bind="days[i].StartMinute">
-                    @for (int m = 0; m < 60; m += 5)
-                    {
-                        <option value="@m">@($"{m:D2}")</option>
-                    }
-                </select>
-            </div>
-            <div class="col">
-                <label>Heure d'arrêt</label>
-                <select class="form-select" @bind="days[i].StopHour">
-                    @for (int h = 0; h < 24; h++)
-                    {
-                        <option value="@h">@($"{h:D2}")</option>
-                    }
-                </select>
-            </div>
-            <div class="col">
-                <label>Minute d'arrêt</label>
-                <select class="form-select" @bind="days[i].StopMinute">
-                    @for (int m = 0; m < 60; m += 5)
-                    {
-                        <option value="@m">@($"{m:D2}")</option>
-                    }
-                </select>
+            <div class="row mt-2">
+                <div class="col">
+                    <label>Heure de démarrage</label>
+                    <select class="form-select" @bind="days[i].StartHour">
+                        @for (int h = 0; h < 24; h++)
+                        {
+                            <option value="@h">@($"{h:D2}")</option>
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Minute de démarrage</label>
+                    <select class="form-select" @bind="days[i].StartMinute">
+                        @for (int m = 0; m < 60; m += 5)
+                        {
+                            <option value="@m">@($"{m:D2}")</option>
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Heure d'arrêt</label>
+                    <select class="form-select" @bind="days[i].StopHour">
+                        @for (int h = 0; h < 24; h++)
+                        {
+                            <option value="@h">@($"{h:D2}")</option>
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Minute d'arrêt</label>
+                    <select class="form-select" @bind="days[i].StopMinute">
+                        @for (int m = 0; m < 60; m += 5)
+                        {
+                            <option value="@m">@($"{m:D2}")</option>
+                        }
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
+    }
 }
 
 @code {
@@ -74,8 +80,11 @@
             get => _isActive;
             set
             {
-                _isActive = value;
-                OnActiveChanged?.Invoke(Index);
+                if (_isActive != value)
+                {
+                    _isActive = value;
+                    OnActiveChanged?.Invoke(Index);
+                }
             }
         }
 
@@ -106,29 +115,36 @@
         public Action<int>? OnActiveChanged { get; set; }
     }
 
-    private string[] dayNames = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+    private readonly string[] dayNames = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
     private List<DaySchedule> days = new();
 
     protected override async Task OnInitializedAsync()
     {
-        for (int i = 0; i < 7; i++)
+        try
         {
-            int indexCopy = i;
-            var day = new DaySchedule
-                {
-                    Index = i,
-                    DayName = dayNames[i],
-                    OnTimeChanged = () => ValidateTime(indexCopy),
-                    OnActiveChanged = async (idx) => await PublishDayActive(idx)
-                };
-            days.Add(day);
+            for (int i = 0; i < 7; i++)
+            {
+                int indexCopy = i;
+                var day = new DaySchedule
+                    {
+                        Index = i,
+                        DayName = dayNames[i],
+                        OnTimeChanged = () => ValidateTime(indexCopy),
+                        OnActiveChanged = async (idx) => await PublishDayActive(idx)
+                    };
+                days.Add(day);
 
-            var dotnetRef = DotNetObjectReference.Create(this);
-            await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/Active", dotnetRef, "SetDayActive", i);
-            await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/StartHour", dotnetRef, "SetStartHour", i);
-            await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/StartMinute", dotnetRef, "SetStartMinute", i);
-            await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/StopHour", dotnetRef, "SetStopHour", i);
-            await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/StopMinute", dotnetRef, "SetStopMinute", i);
+                var dotnetRef = DotNetObjectReference.Create(this);
+                await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/Active", dotnetRef, "SetDayActive", i);
+                await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/StartHour", dotnetRef, "SetStartHour", i);
+                await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/StartMinute", dotnetRef, "SetStartMinute", i);
+                await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/StopHour", dotnetRef, "SetStopHour", i);
+                await JS.InvokeVoidAsync("subscribeToMqtt", $"/Prog/{i}/StopMinute", dotnetRef, "SetStopMinute", i);
+            }
+        }
+        catch (JSException ex)
+        {
+            Console.WriteLine($"Erreur JS : {ex.Message}");
         }
     }
 
@@ -139,6 +155,8 @@
 
     private void ValidateTime(int index)
     {
+        if (index >= days.Count) return;
+
         var day = days[index];
         int start = day.StartHour * 60 + day.StartMinute;
         int stop = day.StopHour * 60 + day.StopMinute;
@@ -158,38 +176,16 @@
         }
     }
 
-    [JSInvokable]
-    public void SetDayActive(string value, int index)
-    {
-        days[index].IsActive = value == "true";
-        StateHasChanged();
-    }
+    [JSInvokable] public void SetDayActive(string value, int index) => ApplyUpdate(() => days[index].IsActive = value == "true");
+    [JSInvokable] public void SetStartHour(string value, int index) => ApplyUpdate(() => days[index].StartHour = int.Parse(value));
+    [JSInvokable] public void SetStartMinute(string value, int index) => ApplyUpdate(() => days[index].StartMinute = int.Parse(value));
+    [JSInvokable] public void SetStopHour(string value, int index) => ApplyUpdate(() => days[index].StopHour = int.Parse(value));
+    [JSInvokable] public void SetStopMinute(string value, int index) => ApplyUpdate(() => days[index].StopMinute = int.Parse(value));
 
-    [JSInvokable]
-    public void SetStartHour(string value, int index)
+    private void ApplyUpdate(Action update)
     {
-        days[index].StartHour = int.Parse(value);
-        StateHasChanged();
-    }
-
-    [JSInvokable]
-    public void SetStartMinute(string value, int index)
-    {
-        days[index].StartMinute = int.Parse(value);
-        StateHasChanged();
-    }
-
-    [JSInvokable]
-    public void SetStopHour(string value, int index)
-    {
-        days[index].StopHour = int.Parse(value);
-        StateHasChanged();
-    }
-
-    [JSInvokable]
-    public void SetStopMinute(string value, int index)
-    {
-        days[index].StopMinute = int.Parse(value);
+        if (days.Count < 7) return;
+        update();
         StateHasChanged();
     }
 }
