@@ -72,6 +72,8 @@ else
         private bool _isActive;
         private int _startHour;
         private int _stopHour;
+        private int _startMinute;
+        private int _stopMinute;
 
         public int Index { get; set; }
 
@@ -83,7 +85,14 @@ else
                 if (_isActive != value)
                 {
                     _isActive = value;
-                    OnActiveChanged?.Invoke(Index);
+                    try
+                    {
+                        OnActiveChanged?.Invoke(Index);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"[Erreur OnActiveChanged] Index: {Index}, {ex.Message}");
+                    }
                 }
             }
         }
@@ -93,8 +102,11 @@ else
             get => _startHour;
             set
             {
-                _startHour = value;
-                OnTimeChanged?.Invoke();
+                if (_startHour != value)
+                {
+                    _startHour = value;
+                    SafeTimeChanged();
+                }
             }
         }
 
@@ -103,16 +115,54 @@ else
             get => _stopHour;
             set
             {
-                _stopHour = value;
-                OnTimeChanged?.Invoke();
+                if (_stopHour != value)
+                {
+                    _stopHour = value;
+                    SafeTimeChanged();
+                }
             }
         }
 
-        public int StartMinute { get; set; }
-        public int StopMinute { get; set; }
+        public int StartMinute
+        {
+            get => _startMinute;
+            set
+            {
+                if (_startMinute != value)
+                {
+                    _startMinute = value;
+                    SafeTimeChanged();
+                }
+            }
+        }
+
+        public int StopMinute
+        {
+            get => _stopMinute;
+            set
+            {
+                if (_stopMinute != value)
+                {
+                    _stopMinute = value;
+                    SafeTimeChanged();
+                }
+            }
+        }
 
         public Action? OnTimeChanged { get; set; }
         public Action<int>? OnActiveChanged { get; set; }
+
+        private void SafeTimeChanged()
+        {
+            try
+            {
+                OnTimeChanged?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Erreur OnTimeChanged] Index: {Index}, {ex.Message}");
+            }
+        }
     }
 
     private readonly string[] dayNames = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
