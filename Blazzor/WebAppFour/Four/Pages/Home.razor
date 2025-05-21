@@ -7,51 +7,47 @@
 
 
 <PageTitle>Home</PageTitle>
+<h3>Connexion MQTT</h3>
 
-@if (!isConnected)
-{
-    <h3>Connexion MQTT</h3>
+<EditForm Model="credentials" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
-    <EditForm Model="credentials" OnValidSubmit="HandleValidSubmit">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-
-        <div class="mb-3">
-            <label class="form-label">Utilisateur</label>
-            <InputText class="form-control" @bind-Value="credentials.UserName" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Mot de passe</label>
-            <InputText type="password" class="form-control" @bind-Value="credentials.Password" />
-        </div>
-        <button class="btn btn-primary" disabled="@isConnecting">
-            @if (isConnecting)
-            {
-                <span class="spinner-border spinner-border-sm"></span>
-                @: Connexion...
+    <div class="mb-3">
+        <label class="form-label">Utilisateur</label>
+        <InputText class="form-control" @bind-Value="credentials.UserName" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Mot de passe</label>
+        <InputText type="password" class="form-control" @bind-Value="credentials.Password" />
+    </div>
+    <button class="btn btn-primary" disabled="@isConnecting">
+        @if (isConnecting)
+        {
+            <span class="spinner-border spinner-border-sm"></span>
+            @: Connexion...
         }
-            else
-            {
-                @: Connecter
-            }
-        </button>
+        else
+        {
+            @: Connecter
+        }
+    </button>
 
-    
 
-    </EditForm>
 
-    @if (errorMessage is not null)
-    {
-        <div class="alert alert-danger mt-3">@errorMessage</div>
-    }
+</EditForm>
+
+@if (errorMessage is not null)
+{
+    <div class="alert alert-danger mt-3">@errorMessage</div>
 }
-else
+@if (isConnected)
 {
     <h1>Bienvenue, @credentials.UserName !</h1>
     <p style="color:green"><strong>MQTT connecté ✔️</strong></p>
     @* …ici tu pourras ajouter tes boutons Publish/Subscribe… *@
-    
 }
+
 
 @code {
     private class Credentials
