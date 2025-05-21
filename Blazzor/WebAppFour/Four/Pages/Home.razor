@@ -121,7 +121,7 @@
         isConnecting = false;
         isConnected = true;
         MqttService.SetConnected(true);
-        
+        MqttService.SetUsername(NomUtilisateur);
         StateHasChanged();
         return Task.CompletedTask;
     }
