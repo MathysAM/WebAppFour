@@ -43,7 +43,7 @@
 }
 @if (isConnected)
 {
-    <h1>Bienvenue, @NomUtilisateur !</h1>
+    <h1 style="margin-top: 20px;">Bienvenue, @NomUtilisateur !</h1>
    
     @* …ici tu pourras ajouter tes boutons Publish/Subscribe… *@
     <button class="btn btn-danger mt-3" @onclick="HandleDisconnect" disabled="@isConnecting">
