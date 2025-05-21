@@ -1,40 +1,77 @@
-﻿using Four.Pages;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
+using System;
+using System.Threading.Tasks;
 
 namespace Four.Services
 {
-    public class MqttService
+    public class MqttService : IAsyncDisposable
     {
-        // Indique si le client est connecté
-        public bool IsConnected { get; private set; }
+        private readonly IJSRuntime _js;
+        private readonly DotNetObjectReference<MqttService> _dotNetRef;
 
-        // Le nom de l'utilisateur connecté
+        public bool IsConnected { get; private set; }
         public string Username { get; private set; } = string.Empty;
 
-        // Événement déclenché à chaque changement de connexion
         public event Action? OnConnectionChanged;
-
-        // Événement déclenché en cas d'erreur MQTT
         public event Action<string>? OnError;
 
-        // Appelé pour mettre à jour l'état connecté/déconnecté
-        public void SetConnected(bool connected)
+        public MqttService(IJSRuntime js)
         {
-            IsConnected = connected;
+            _js = js;
+            _dotNetRef = DotNetObjectReference.Create(this);
+        }
+
+        /// <summary>
+        /// Expose la référence .NET unique pour le JS interop.
+        /// </summary>
+        public DotNetObjectReference<MqttService> DotNetRef => _dotNetRef;
+
+        /// <summary>
+        /// Appelé par le composant pour démarrer la connexion.
+        /// </summary>
+        public ValueTask ConnectAsync(string url, string user, string pass)
+        {
+            Username = user;
+            return _js.InvokeVoidAsync("connectMqtt", url, user, pass, _dotNetRef);
+        }
+
+        /// <summary>
+        /// Appelé par le composant pour couper la connexion.
+        /// </summary>
+        public ValueTask DisconnectAsync()
+        {
+            return _js.InvokeVoidAsync("disconnectMqtt");
+        }
+
+        [JSInvokable]
+        public Task NotifyMqttConnected()
+        {
+            IsConnected = true;
             OnConnectionChanged?.Invoke();
+            return Task.CompletedTask;
         }
 
-        // Appelé pour mémoriser le nom d'utilisateur
-        public void SetUsername(string username)
+        [JSInvokable]
+        public Task NotifyMqttDisconnected()
         {
-            Username = username;
-            // (pas d'événement ici, puisque l'UI rafraîchit déjà à la connexion)
+            IsConnected = false;
+            OnConnectionChanged?.Invoke();
+            return Task.CompletedTask;
         }
 
-        // Appelé depuis le composant en cas d'erreur
-        public void RaiseError(string message)
+        [JSInvokable]
+        public Task NotifyMqttError(string message)
         {
+            IsConnected = false;
             OnError?.Invoke(message);
+            OnConnectionChanged?.Invoke();
+            return Task.CompletedTask;
+        }
+
+        public ValueTask DisposeAsync()
+        {
+            _dotNetRef.Dispose();
+            return ValueTask.CompletedTask;
         }
     }
 }
