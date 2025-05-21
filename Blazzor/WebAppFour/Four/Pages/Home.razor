@@ -7,7 +7,7 @@
 
 
 <PageTitle>Home</PageTitle>
-<h3>Connexion MQTT</h3>
+<h3>Connexion</h3>
 
 <EditForm Model="credentials" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
@@ -44,7 +44,7 @@
 @if (isConnected)
 {
     <h1>Bienvenue, @NomUtilisateur !</h1>
-    <p style="color:green"><strong>MQTT connecté ✔️</strong></p>
+   
     @* …ici tu pourras ajouter tes boutons Publish/Subscribe… *@
     <button class="btn btn-danger mt-3" @onclick="HandleDisconnect" disabled="@isConnecting">
         @if (isConnecting)
