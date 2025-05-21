@@ -46,6 +46,17 @@
     <h1>Bienvenue, @credentials.UserName !</h1>
     <p style="color:green"><strong>MQTT connecté ✔️</strong></p>
     @* …ici tu pourras ajouter tes boutons Publish/Subscribe… *@
+    <button class="btn btn-danger mt-3" @onclick="HandleDisconnect" disabled="@isConnecting">
+        @if (isConnecting)
+        {
+            <span class="spinner-border spinner-border-sm"></span>
+            @: Déconnexion...
+        }
+        else
+        {
+            @: Déconnecter
+        }
+    </button>
 }
 
 
@@ -113,6 +124,24 @@
         MqttService.SetConnected(false);
         StateHasChanged();
         return Task.CompletedTask;
+    }
+
+    private async Task HandleDisconnect()
+    {
+        isConnecting = true;    // Pour afficher le spinner si besoin
+        errorMessage = null;
+
+        try
+        {
+            // Appelle la fonction JS qui déconnecte le client MQTT
+            await JS.InvokeVoidAsync("disconnectMqtt");
+            // La mise à jour réelle de isConnected se fera dans le callback NotifyMqttDisconnected
+        }
+        catch (JSException jsEx)
+        {
+            errorMessage = $"Erreur JS lors de la déconnexion : {jsEx.Message}";
+            isConnecting = false;
+        }
     }
 
     public void Dispose()
