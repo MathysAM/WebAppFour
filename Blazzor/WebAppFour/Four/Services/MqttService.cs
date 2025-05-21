@@ -6,6 +6,7 @@ namespace Four.Services // adapte au nom réel de ton projet si différent
     public class MqttService
     {
         public bool IsConnected { get; private set; }
+        public string Username { get; private set; }
         public DotNetObjectReference<Home>? DotNetRef { get; set; }
 
         public event Action? OnConnectionChanged;
@@ -13,6 +14,11 @@ namespace Four.Services // adapte au nom réel de ton projet si différent
         {
             IsConnected = value;
             OnConnectionChanged?.Invoke();
+        }
+
+        public void SetUsername(string username) 
+        {
+            Username = username;
         }
 
         public void Clear()

@@ -81,6 +81,10 @@
         dotNetRef = DotNetObjectReference.Create(this);
         MqttService.DotNetRef = dotNetRef;
         isConnected = MqttService.IsConnected;
+        if (isConnected)
+        {
+            NomUtilisateur = MqttService.Username;
+        }
     }
 
     private async Task HandleValidSubmit()
