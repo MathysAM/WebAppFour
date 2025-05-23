@@ -8,7 +8,9 @@ let mqttConnected = false;
 let mqttPingOk = false;
 let pingIntervalId = null;
 
-// 1) Connexion + démarrage de la boucle de ping
+/**
+ * 1) Connexion + enregistrement des handlers (sans notification directe de déconnexion)
+ */
 window.connectMqtt = (brokerUrl, user, pass, dotNetHelper) => {
     if (window.mqttClient && mqttConnected) {
         console.warn("✅ Déjà connecté à MQTT.");
@@ -21,51 +23,46 @@ window.connectMqtt = (brokerUrl, user, pass, dotNetHelper) => {
         username: user,
         password: pass,
         clean: true,
-        reconnectPeriod: 0 // on gère la reconnexion nous-mêmes
+        reconnectPeriod: 0  // on gère la reconnexion nous-mêmes
     });
 
-    // Callbacks MQTT
+    // À la connexion réussie, on notifie une seule fois et on démarre le ping
     window.mqttClient.on('connect', () => {
         mqttConnected = true;
         console.log('✅ MQTT connecté');
         dotNetHelper.invokeMethodAsync('NotifyMqttConnected').catch(console.error);
+        startPingLoop();
     });
 
+    // Sur close/offline/error, on met à jour le flag, sans notifier ici
     window.mqttClient.on('close', () => {
         mqttConnected = false;
         console.log('🔌 MQTT socket closed');
-        dotNetHelper.invokeMethodAsync('NotifyMqttDisconnected').catch(console.error);
     });
-
     window.mqttClient.on('offline', () => {
         mqttConnected = false;
         console.log('📴 MQTT offline');
-        dotNetHelper.invokeMethodAsync('NotifyMqttDisconnected').catch(console.error);
     });
-
     window.mqttClient.on('error', err => {
         mqttConnected = false;
         console.error('❌ Erreur MQTT :', err);
+        // Vous pouvez toujours transmettre le détail technique
         dotNetHelper.invokeMethodAsync('NotifyMqttError', err.message).catch(console.error);
     });
 
+    // Routage des messages vers Blazor
     window.mqttClient.on('message', (topic, message) => {
-        try {
-            const sub = window.subscriptions[topic];
-            if (sub && sub.ref && sub.method) {
-                sub.ref.invokeMethodAsync(sub.method, message.toString(), sub.index)
-                    .catch(err => console.error(`❌ Échec ${sub.method}(${sub.index})`, err));
-            }
-        } catch (err) {
-            console.error("Erreur dans handler .NET depuis message MQTT :", err);
+        const sub = window.subscriptions[topic];
+        if (sub && sub.ref && sub.method) {
+            sub.ref.invokeMethodAsync(sub.method, message.toString(), sub.index)
+                .catch(e => console.error(`Erreur appel ${sub.method}:`, e));
         }
     });
-
-    // Démarrage du ping QoS 1
-    startPingLoop();
 };
 
-// 2) Déconnexion + arrêt de la boucle de ping
+/**
+ * 2) Déconnexion
+ */
 window.disconnectMqtt = () => {
     if (!window.mqttClient) {
         console.warn("MQTT déjà déconnecté.");
@@ -78,8 +75,7 @@ window.disconnectMqtt = () => {
 
     window.mqttClient.end(false, () => {
         console.log("🔌 MQTT déconnecté");
-        window.dotNetHelper?.invokeMethodAsync('NotifyMqttDisconnected').catch(console.error);
-
+        dotNetHelper.invokeMethodAsync('NotifyMqttDisconnected').catch(console.error);
         // Reset globals
         window.mqttClient = null;
         window.dotNetHelper = null;
@@ -88,7 +84,9 @@ window.disconnectMqtt = () => {
     });
 };
 
-// 3) Publication “momentary”
+/**
+ * 3) Publication “momentary”
+ */
 window.publishMomentary = async (topic) => {
     if (!mqttConnected) {
         console.warn("⚠️ MQTT non connecté. Impossible de publier.");
@@ -103,7 +101,9 @@ window.publishMomentary = async (topic) => {
     }
 };
 
-// 4) Publication de valeurs
+/**
+ * 4) Publication de valeurs simples
+ */
 window.publishMqttValue = (topic, value) => {
     if (!mqttConnected) {
         console.warn("⚠️ MQTT non connecté. Impossible de publier.");
@@ -116,7 +116,9 @@ window.publishMqttValue = (topic, value) => {
     }
 };
 
-// 5) Abonnement
+/**
+ * 5) Abonnement à un topic
+ */
 window.subscribeToMqtt = (topic, dotNetRef, methodName, index) => {
     if (!mqttConnected) {
         console.warn("⚠️ MQTT non connecté. Impossible de s'abonner à :", topic);
@@ -133,25 +135,26 @@ window.subscribeToMqtt = (topic, dotNetRef, methodName, index) => {
     });
 };
 
-// 6) Boucle de ping QoS 1
+/**
+ * 6) Boucle de ping QoS 1 : met à jour mqttPingOk sans notifier directement
+ */
 function startPingLoop() {
-    if (pingIntervalId) clearInterval(pingIntervalId);
+    mqttPingOk = true;  // état initial “sain”
+    clearInterval(pingIntervalId);
 
     pingIntervalId = setInterval(() => {
-        // Si pas de client ou déjà déconnecté physiquement, on met mqttPingOk = false
-        if (!window.mqttClient || !mqttConnected) {
+        if (!mqttConnected) {
             mqttPingOk = false;
             return;
         }
-
-        // Envoi d’un ping QoS 1 ; on ne notifie rien ici
         window.mqttClient.publish('health/ping', 'ping', { qos: 1 }, err => {
             mqttPingOk = !err;
-            // (plus d'appel direct à dotNetHelper.invokeMethodAsync ici)
         });
-    }, 10_000);
+    }, 10000);
 }
 
-// Exposez uniquement les getters pour vos flags
+/**
+ * 7) Getters exposés à .NET pour la supervision côté C#
+ */
 window.isMqttConnected = () => mqttConnected === true;
 window.isMqttPingHealthy = () => mqttPingOk === true;
