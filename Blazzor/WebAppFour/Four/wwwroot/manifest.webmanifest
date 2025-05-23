@@ -8,7 +8,7 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "icons/pizza-thierry.png",
+      "src": "icons/PizzaThierry.png",
       "type": "image/png",
       "sizes": "512x512"
     }
