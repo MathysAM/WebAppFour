@@ -15,8 +15,9 @@
     <!-- Google Font Montserrat Bold -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
 
-    <!-- Custom Loading Styles -->
+    <!-- Custom Splash Styles -->
     <style>
+        /* Full-screen container */
         html, body {
             height: 100%;
             margin: 0;
@@ -29,18 +30,20 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100vw;
             background-color: #000;
-            flex-direction: column;
+            padding: 0;
+            margin: 0;
         }
-
-        .loading-progress {
-            display: none;
-        }
-
+        /* Static title text */
         .loading-progress-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 2rem;
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-align: center;
+            line-height: 1;
+            padding: 0 1rem;
+            word-break: break-word;
         }
     </style>
 
@@ -53,7 +56,7 @@
     <!-- Apple iOS PWA support -->
     <link rel="apple-touch-icon" sizes="512x512" href="PizzaThierryF.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 </head>
 
 <body>
