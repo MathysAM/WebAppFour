@@ -5,23 +5,25 @@
 
 <h3 class="mb-4">Programmation journalière</h3>
 
-@if (days != null && days.Count == 7)
+@if (days?.Count == 7)
 {
-    @for (int i = 0; i < 7; i++)
+    @for (int i = 0; i < days.Count; i++)
     {
+        var day = days[i];
+           <!-- capture de la référence par valeur -->
         <div class="mb-4 border p-3 rounded">
             <label class="form-check-label">
                 <input type="checkbox"
                        class="form-check-input me-2"
-                       @bind="days[i].IsActive"
+                       @bind="day.IsActive"
                        @bind:event="onchange" />
-                @days[i].DayName
+                @day.DayName
             </label>
 
             <div class="row mt-2">
                 <div class="col">
                     <label>Heure de démarrage</label>
-                    <select class="form-select" @bind="days[i].StartHour">
+                    <select class="form-select" @bind="day.StartHour">
                         @for (int h = 0; h < 24; h++)
                         {
                             <option value="@h">@($"{h:D2}")</option>
@@ -30,7 +32,7 @@
                 </div>
                 <div class="col">
                     <label>Minute de démarrage</label>
-                    <select class="form-select" @bind="days[i].StartMinute">
+                    <select class="form-select" @bind="day.StartMinute">
                         @for (int m = 0; m < 60; m += 5)
                         {
                             <option value="@m">@($"{m:D2}")</option>
@@ -39,7 +41,7 @@
                 </div>
                 <div class="col">
                     <label>Heure d'arrêt</label>
-                    <select class="form-select" @bind="days[i].StopHour">
+                    <select class="form-select" @bind="day.StopHour">
                         @for (int h = 0; h < 24; h++)
                         {
                             <option value="@h">@($"{h:D2}")</option>
@@ -48,7 +50,7 @@
                 </div>
                 <div class="col">
                     <label>Minute d'arrêt</label>
-                    <select class="form-select" @bind="days[i].StopMinute">
+                    <select class="form-select" @bind="day.StopMinute">
                         @for (int m = 0; m < 60; m += 5)
                         {
                             <option value="@m">@($"{m:D2}")</option>
@@ -58,6 +60,10 @@
             </div>
         </div>
     }
+}
+else
+{
+    <p>Chargement de la programmation...</p>
 }
 else
 {
