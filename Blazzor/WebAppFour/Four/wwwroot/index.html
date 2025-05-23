@@ -4,13 +4,45 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Four</title>
+    <title>Pizza Thierry</title>
     <base href="/WebAppFour/" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link href="Four.styles.css" rel="stylesheet" />
+
+    <!-- Google Font Montserrat Bold -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+
+    <!-- Custom Loading Styles -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        #app {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            flex-direction: column;
+        }
+
+        .loading-progress {
+            display: none;
+        }
+
+        .loading-progress-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+        }
+    </style>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="PizzaThierryF.png" />
@@ -19,7 +51,6 @@
     <link rel="manifest" href="manifest.webmanifest" />
 
     <!-- Apple iOS PWA support -->
-    <link rel="apple-touch-icon" sizes="192x192" href="PizzaThierryF.png" />
     <link rel="apple-touch-icon" sizes="512x512" href="PizzaThierryF.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -27,11 +58,7 @@
 
 <body>
     <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+        <div class="loading-progress-text">Pizza Thierry</div>
     </div>
 
     <div id="blazor-error-ui">
