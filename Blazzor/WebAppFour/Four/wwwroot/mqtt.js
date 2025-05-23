@@ -7,6 +7,7 @@ window.subscriptions = {};
 let mqttConnected = false;
 let mqttPingOk = false;
 let pingIntervalId = null;
+let connectTimeoutId = null;
 
 /**
  * 1) Connexion + enregistrement des handlers (sans notification directe de déconnexion)
