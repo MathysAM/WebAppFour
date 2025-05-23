@@ -46,11 +46,7 @@
         // S'abonner pour être notifié des changements d'état
         MqttService.OnConnectionChanged += OnConnectionChanged;
 
-        // Si on démarre déjà déconnecté, forcer la navigation vers la page connexion
-        if (!MqttService.IsConnected)
-        {
-            NavManager.NavigateTo("", true);
-        }
+       
     }
 
     private void OnConnectionChanged()
