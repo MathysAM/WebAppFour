@@ -61,7 +61,7 @@ namespace Four.Services
                         // Transition : connecté -> déconnecté
                         if (!jsConnected || !pingOk)
                         {
-                            await NotifyMqttDisconnected();
+                           // await NotifyMqttDisconnected();
                         }
                     }
                     else
@@ -69,7 +69,7 @@ namespace Four.Services
                         // Transition : déconnecté -> connecté
                         if (jsConnected && pingOk)
                         {
-                            await NotifyMqttConnected();
+                            //await NotifyMqttConnected();
                         }
                     }
                 }
