@@ -136,26 +136,22 @@ window.subscribeToMqtt = (topic, dotNetRef, methodName, index) => {
 // 6) Boucle de ping QoS 1
 function startPingLoop() {
     if (pingIntervalId) clearInterval(pingIntervalId);
+
     pingIntervalId = setInterval(() => {
+        // Si pas de client ou déjà déconnecté physiquement, on met mqttPingOk = false
         if (!window.mqttClient || !mqttConnected) {
             mqttPingOk = false;
             return;
         }
+
+        // Envoi d’un ping QoS 1 ; on ne notifie rien ici
         window.mqttClient.publish('health/ping', 'ping', { qos: 1 }, err => {
             mqttPingOk = !err;
-            if (!mqttPingOk) {
-                console.warn("⚠️ Ping MQTT failed");
-                window.dotNetHelper?.invokeMethodAsync('NotifyMqttDisconnected').catch(console.error);
-            }
+            // (plus d'appel direct à dotNetHelper.invokeMethodAsync ici)
         });
-    }, 10000);
+    }, 10_000);
 }
 
-// 7) Exposition de l’état à .NET
-window.isMqttConnected = () => {
-    return mqttConnected === true && !!window.mqttClient && window.mqttClient.connected === true;
-};
-
-window.isMqttPingHealthy = () => {
-    return mqttPingOk === true;
-};
+// Exposez uniquement les getters pour vos flags
+window.isMqttConnected = () => mqttConnected === true;
+window.isMqttPingHealthy = () => mqttPingOk === true;
