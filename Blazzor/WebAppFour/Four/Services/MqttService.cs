@@ -31,7 +31,7 @@ namespace Four.Services
             Username = user;
             await _js.InvokeVoidAsync("connectMqtt", url, user, pass, _dotNetRef);
 
-            // Démarrage de la boucle de surveillance
+            // Démarrage de la boucle de supervision
             _monitorCts = new CancellationTokenSource();
             _monitorTimer = new PeriodicTimer(TimeSpan.FromSeconds(5));
             _ = MonitorConnectionAsync(_monitorCts.Token);
@@ -39,7 +39,7 @@ namespace Four.Services
 
         public async ValueTask DisconnectAsync()
         {
-            // Arrêt de la surveillance
+            // Arrêt de la boucle de supervision
             _monitorCts?.Cancel();
             _monitorTimer?.Dispose();
 
@@ -52,17 +52,25 @@ namespace Four.Services
             {
                 while (await _monitorTimer!.WaitForNextTickAsync(token))
                 {
-                    // Vérifier l'état MQTT et le ping
+                    // Interroger l'état MQTT et le ping
                     bool jsConnected = await _js.InvokeAsync<bool>("isMqttConnected");
                     bool pingOk = await _js.InvokeAsync<bool>("isMqttPingHealthy");
 
-                    if (IsConnected && (!jsConnected || !pingOk))
+                    if (IsConnected)
                     {
-                        await NotifyMqttDisconnected();
+                        // Transition : connecté -> déconnecté
+                        if (!jsConnected || !pingOk)
+                        {
+                            await NotifyMqttDisconnected();
+                        }
                     }
-                    else if (!IsConnected && jsConnected && pingOk)
+                    else
                     {
-                        //await NotifyMqttConnected();
+                        // Transition : déconnecté -> connecté
+                        if (jsConnected && pingOk)
+                        {
+                            await NotifyMqttConnected();
+                        }
                     }
                 }
             }
@@ -75,25 +83,34 @@ namespace Four.Services
         [JSInvokable]
         public Task NotifyMqttConnected()
         {
-            IsConnected = true;
-            OnConnectionChanged?.Invoke();
+            if (!IsConnected)
+            {
+                IsConnected = true;
+                OnConnectionChanged?.Invoke();
+            }
             return Task.CompletedTask;
         }
 
         [JSInvokable]
         public Task NotifyMqttDisconnected()
         {
-            IsConnected = false;
-            OnConnectionChanged?.Invoke();
+            if (IsConnected)
+            {
+                IsConnected = false;
+                OnConnectionChanged?.Invoke();
+            }
             return Task.CompletedTask;
         }
 
         [JSInvokable]
         public Task NotifyMqttError(string message)
         {
-            IsConnected = false;
-            OnError?.Invoke("Pas de connexion internet ou identifiant incorrecte");
-            OnConnectionChanged?.Invoke();
+            if (IsConnected)
+            {
+                IsConnected = false;
+                OnConnectionChanged?.Invoke();
+            }
+            OnError?.Invoke(message);
             return Task.CompletedTask;
         }
 
