@@ -1,6 +1,6 @@
 ﻿@using Four.Services
-
 @inject MqttService MqttService
+@inject NavigationManager NavManager
 @implements IDisposable
 
 <div class="top-row ps-3 navbar navbar-dark">
@@ -37,25 +37,45 @@
 
 @code {
     private bool collapseNavMenu = true;
-
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+    private void ToggleNavMenu() => collapseNavMenu = !collapseNavMenu;
+
     protected override void OnInitialized()
     {
+        // S'abonner pour être notifié des changements d'état
         MqttService.OnConnectionChanged += OnConnectionChanged;
+
+        // Si on démarre déjà déconnecté, forcer la navigation vers la page connexion
+        if (!MqttService.IsConnected)
+        {
+            NavManager.NavigateTo("", true);
+        }
     }
 
     private void OnConnectionChanged()
     {
-        InvokeAsync(StateHasChanged); // ✅ toujours utiliser ça pour être thread-safe
+        // Toujours passer par InvokeAsync pour
+        // éviter les soucis de contexte Blazor
+        InvokeAsync(() =>
+        {
+            if (!MqttService.IsConnected)
+            {
+                // Redirige immédiatement vers la page Connection
+                NavManager.NavigateTo("", true);
+            }
+            else
+            {
+                // Si on retrouve la connexion, on peut
+                // simplement rafraîchir l'UI pour ré-afficher les liens
+                StateHasChanged();
+            }
+        });
     }
 
     public void Dispose()
     {
-        MqttService.OnConnectionChanged -= OnConnectionChanged; // ❌ commenté
+        // Penser à se désabonner pour éviter les fuites mémoire
+        MqttService.OnConnectionChanged -= OnConnectionChanged;
     }
 }

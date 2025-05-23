@@ -1,5 +1,6 @@
 ﻿using Microsoft.JSInterop;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Four.Services
@@ -8,6 +9,8 @@ namespace Four.Services
     {
         private readonly IJSRuntime _js;
         private readonly DotNetObjectReference<MqttService> _dotNetRef;
+        private PeriodicTimer? _monitorTimer;
+        private CancellationTokenSource? _monitorCts;
 
         public bool IsConnected { get; private set; }
         public string Username { get; private set; } = string.Empty;
@@ -21,26 +24,52 @@ namespace Four.Services
             _dotNetRef = DotNetObjectReference.Create(this);
         }
 
-        /// <summary>
-        /// Expose la référence .NET unique pour le JS interop.
-        /// </summary>
         public DotNetObjectReference<MqttService> DotNetRef => _dotNetRef;
 
-        /// <summary>
-        /// Appelé par le composant pour démarrer la connexion.
-        /// </summary>
-        public ValueTask ConnectAsync(string url, string user, string pass)
+        public async ValueTask ConnectAsync(string url, string user, string pass)
         {
             Username = user;
-            return _js.InvokeVoidAsync("connectMqtt", url, user, pass, _dotNetRef);
+            await _js.InvokeVoidAsync("connectMqtt", url, user, pass, _dotNetRef);
+
+            // Démarrage de la boucle de surveillance
+            _monitorCts = new CancellationTokenSource();
+            _monitorTimer = new PeriodicTimer(TimeSpan.FromSeconds(5));
+            _ = MonitorConnectionAsync(_monitorCts.Token);
         }
 
-        /// <summary>
-        /// Appelé par le composant pour couper la connexion.
-        /// </summary>
-        public ValueTask DisconnectAsync()
+        public async ValueTask DisconnectAsync()
         {
-            return _js.InvokeVoidAsync("disconnectMqtt");
+            // Arrêt de la surveillance
+            _monitorCts?.Cancel();
+            _monitorTimer?.Dispose();
+
+            await _js.InvokeVoidAsync("disconnectMqtt");
+        }
+
+        private async Task MonitorConnectionAsync(CancellationToken token)
+        {
+            try
+            {
+                while (await _monitorTimer!.WaitForNextTickAsync(token))
+                {
+                    // Vérifier l'état MQTT et le ping
+                    bool jsConnected = await _js.InvokeAsync<bool>("isMqttConnected");
+                    bool pingOk = await _js.InvokeAsync<bool>("isMqttPingHealthy");
+
+                    if (IsConnected && (!jsConnected || !pingOk))
+                    {
+                        await NotifyMqttDisconnected();
+                    }
+                    else if (!IsConnected && jsConnected && pingOk)
+                    {
+                        //await NotifyMqttConnected();
+                    }
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                // Boucle interrompue
+            }
         }
 
         [JSInvokable]
@@ -63,13 +92,15 @@ namespace Four.Services
         public Task NotifyMqttError(string message)
         {
             IsConnected = false;
-            OnError?.Invoke(message);
+            OnError?.Invoke("Pas de connexion internet ou identifiant incorrecte");
             OnConnectionChanged?.Invoke();
             return Task.CompletedTask;
         }
 
         public ValueTask DisposeAsync()
         {
+            _monitorCts?.Cancel();
+            _monitorTimer?.Dispose();
             _dotNetRef.Dispose();
             return ValueTask.CompletedTask;
         }
