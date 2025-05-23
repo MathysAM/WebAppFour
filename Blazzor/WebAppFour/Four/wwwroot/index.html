@@ -17,7 +17,6 @@
 
     <!-- Custom Splash Styles -->
     <style>
-        /* Full-screen container */
         html, body {
             height: 100%;
             margin: 0;
@@ -29,19 +28,63 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             width: 100vw;
             background-color: #000;
-            padding: 0;
-            margin: 0;
         }
-        /* Static title text */
-        .loading-progress-text {
+
+        .loading-progress {
+            width: 80px;
+            height: 80px;
+            animation: rotate 2s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+            .loading-progress circle {
+                fill: none;
+                stroke-width: 4;
+            }
+
+                .loading-progress circle:nth-child(1) {
+                    stroke: rgba(255, 255, 255, 0.25);
+                }
+
+                .loading-progress circle:nth-child(2) {
+                    stroke: #fff;
+                    stroke-linecap: round;
+                    stroke-dasharray: 283;
+                    stroke-dashoffset: 75;
+                    animation: dash 1.5s ease-in-out infinite;
+                }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dashoffset: 283;
+            }
+
+            50% {
+                stroke-dashoffset: 75;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                stroke-dashoffset: 283;
+                transform: rotate(360deg);
+            }
+        }
+        /* Static splash text, not targeted by Blazor loader */
+        .splash-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: clamp(2rem, 8vw, 4rem);
             text-align: center;
-            line-height: 1;
             padding: 0 1rem;
             word-break: break-word;
         }
@@ -61,7 +104,11 @@
 
 <body>
     <div id="app">
-        <div class="loading-progress-text">Pizza Thierry</div>
+        <svg class="loading-progress" viewBox="0 0 100 100">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="splash-text">Pizza Thierry</div>
     </div>
 
     <div id="blazor-error-ui">
