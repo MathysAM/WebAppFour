@@ -168,8 +168,15 @@ else
 
     private async Task PublishDayActive(int index)
     {
-        if (index < 0 || index >= days.Count) return;
-        await JS.InvokeVoidAsync("publishMqtt", $"/Prog/{index}/Active", days[index].IsActive.ToString().ToLower());
+        if (index < 0 || index >= days.Count)
+            return;
+
+        // Appel de la fonction JS existante 'publishMqttValue' au lieu de 'publishMqtt'
+        await JS.InvokeVoidAsync(
+            "publishMqttValue",
+            $"/Prog/{index}/Active",
+            days[index].IsActive.ToString().ToLower()
+        );
     }
 
     private void ValidateTime(int index)
