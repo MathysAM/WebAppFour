@@ -83,34 +83,28 @@ namespace Four.Services
         [JSInvokable]
         public Task NotifyMqttConnected()
         {
-            if (!IsConnected)
-            {
-                IsConnected = true;
+              IsConnected = true;
                 OnConnectionChanged?.Invoke();
-            }
+            
             return Task.CompletedTask;
         }
 
         [JSInvokable]
         public Task NotifyMqttDisconnected()
         {
-            if (IsConnected)
-            {
+           
                 IsConnected = false;
                 OnConnectionChanged?.Invoke();
-            }
+            
             return Task.CompletedTask;
         }
 
         [JSInvokable]
         public Task NotifyMqttError(string message)
         {
-            if (IsConnected)
-            {
-                IsConnected = false;
-                OnConnectionChanged?.Invoke();
-            }
-            OnError?.Invoke(message);
+            IsConnected = false;
+            OnError?.Invoke("Pas de connexion internet ou identifiant incorrecte");
+            OnConnectionChanged?.Invoke();
             return Task.CompletedTask;
         }
 
