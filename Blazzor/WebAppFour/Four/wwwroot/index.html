@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <!-- Viewport responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Pizza Thierry</title>
     <base href="/WebAppFour/" />
 
-    <!-- Styles Bootstrap & app -->
+    <!-- CSS Bootstrap & app -->
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
-    <link href="Four.styles.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="Four.styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+          rel="stylesheet" />
 
     <style>
-        /* Corps et host Blazor en full size */
+        /* Host Blazor en pleine page (sans centrer) */
         html, body, #app {
             margin: 0;
             padding: 0;
@@ -23,7 +26,7 @@
             color: #fff;
         }
 
-        /* SPLASH plein écran */
+        /* Splash plein écran */
         #splash {
             position: fixed;
             top: 0;
@@ -35,7 +38,7 @@
             align-items: center;
             flex-direction: column;
             background-color: #000;
-            z-index: 999;
+            z-index: 9999;
         }
 
         .loading-progress {
@@ -63,7 +66,7 @@
                 }
 
         @keyframes rotate {
-            100% {
+            to {
                 transform: rotate(360deg);
             }
         }
@@ -94,11 +97,11 @@
         }
     </style>
 
-    <link rel="icon" type="image/png" href="PizzaThierryF.png" />
+    <!-- PWA manifest & icônes -->
     <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="icon" type="image/png" href="PizzaThierryF.png" />
     <link rel="apple-touch-icon" sizes="512x512" href="PizzaThierryF.png" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 </head>
 <body>
     <!-- Écran de splash -->
@@ -110,7 +113,7 @@
         <div class="splash-text">Pizza Thierry</div>
     </div>
 
-    <!-- Host pour Blazor -->
+    <!-- Hôte Blazor -->
     <div id="app"></div>
 
     <!-- UI d’erreur Blazor -->
@@ -120,17 +123,15 @@
         <a class="dismiss">🗙</a>
     </div>
 
-    <!-- Enregistrement du Service Worker -->
-    <script>
-        navigator.serviceWorker.register('service-worker.js');
-    </script>
+    <!-- Service Worker -->
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
 
     <!-- MQTT -->
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <script src="mqtt.js"></script>
 
-    <!-- Blazor WebAssembly et suppression du splash -->
-    <script src="_framework/blazor.webassembly.js"></script>
+    <!-- Blazor WebAssembly (démarrage manuel) -->
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
         Blazor.start().then(() => {
             const splash = document.getElementById('splash');

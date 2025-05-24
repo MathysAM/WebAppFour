@@ -1,14 +1,19 @@
 {
   "name": "Pizza Thierry",
-  "short_name": "Pizza Thierry",
-  "start_url": "/WebAppFour/",
+  "short_name": "PizzaThierry",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#000000",
   "theme_color": "#03173d",
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "icons/PizzaThierryF.png",
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "PizzaThierryF.png",
       "type": "image/png",
       "sizes": "512x512"
     }
