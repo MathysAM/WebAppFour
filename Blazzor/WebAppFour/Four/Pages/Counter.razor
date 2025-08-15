@@ -1,15 +1,34 @@
 ﻿@page "/counter"
 @inject IJSRuntime JS
+@using System.Globalization
 
 <PageTitle>Counter</PageTitle>
 
+<div class="mb-3">
+    <label class="form-label">Consigne température</label>
+    <input class="form-control"
+           placeholder="ex: 23.50"
+           @bind="consigneRaw"
+           @bind:event="oninput"
+           @onblur="FormatConsigne" />
+    @if (!string.IsNullOrEmpty(consigneError))
+    {
+        <div class="text-danger small mt-1">@consigneError</div>
+    }
+</div>
+
+<button class="btn btn-primary me-3" @onclick="PublishConsigne">
+    📡 Publier consigne
+</button>
 
 <button class="btn btn-success me-2" @onclick="PublishStart">▶️ Start</button>
-<button class="btn btn-danger" @onclick="PublishStop">⏹️ Stop</button>
+<button class="btn btn-danger" @onclick="PublishStop">⏹️ Stop  </button>
 
 
 @code {
-  
+    private string consigneRaw = "";
+    private string? consigneError;
+
     private async Task PublishStart()
     {
         await JS.InvokeVoidAsync("publishMomentary", "/Sup/Start");
@@ -18,5 +37,51 @@
     private async Task PublishStop()
     {
         await JS.InvokeVoidAsync("publishMomentary", "/Sup/Stop");
+    }
+
+    private async Task PublishConsigne()
+    {
+        if (!TryParseTwoDecimals(consigneRaw, out var formatted, out var err))
+        {
+            consigneError = err;
+            return;
+        }
+
+        consigneError = null;
+        await JS.InvokeVoidAsync("publishMqttValue", "/Sup/ConsigneTemperture", formatted);
+        consigneRaw = formatted;
+    }
+
+    private Task FormatConsigne(FocusEventArgs _)
+    {
+        if (TryParseTwoDecimals(consigneRaw, out var formatted, out var err))
+        {
+            consigneRaw = formatted;
+            consigneError = null;
+        }
+        else
+        {
+            consigneError = err;
+        }
+        return Task.CompletedTask;
+    }
+
+    /// <summary>
+    /// Formate toujours à deux décimales, pas de zéro-padding avant la virgule.
+    /// </summary>
+    private static bool TryParseTwoDecimals(string input, out string formatted, out string? error)
+    {
+        formatted = "";
+        error = null;
+
+        if (!double.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out var value) &&
+            !double.TryParse(input, NumberStyles.Float, CultureInfo.GetCultureInfo("fr-FR"), out value))
+        {
+            error = "Valeur invalide (ex: 23.50)";
+            return false;
+        }
+
+        formatted = value.ToString("0.00", CultureInfo.InvariantCulture); // impose deux décimales
+        return true;
     }
 }
