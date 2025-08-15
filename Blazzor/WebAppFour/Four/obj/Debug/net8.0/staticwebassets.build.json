@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qHPwDoIj6MkhlDVemByXfbAx29sxuLuTTUnQgwH+Fp8=",
+  "Hash": "ahJTocHO1y4Fb3Hdi7jAszZTqkETbAe5Tq8gKV0mA2o=",
   "Source": "Four",
   "BasePath": "/",
   "Mode": "Root",
@@ -71,7 +71,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\runtimes\\browser-wasm\\native\\dotnet.js"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.16\\runtimes\\browser-wasm\\native\\dotnet.js"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
@@ -90,15 +90,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\runtimes\\browser-wasm\\native\\dotnet.js.map"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.16\\runtimes\\browser-wasm\\native\\dotnet.js.map"
     },
     {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.2.x9gq6vi1pu.js",
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.16.jo2xizczsd.js",
       "SourceId": "Four",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.2.x9gq6vi1pu.js",
+      "RelativePath": "_framework/dotnet.native.8.0.16.jo2xizczsd.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -109,7 +109,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\runtimes\\browser-wasm\\native\\dotnet.native.js"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.16\\runtimes\\browser-wasm\\native\\dotnet.native.js"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
@@ -128,15 +128,15 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.16\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
     },
     {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.2.c6dto6gv29.js",
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.16.feh6t7aoiq.js",
       "SourceId": "Four",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.2.c6dto6gv29.js",
+      "RelativePath": "_framework/dotnet.runtime.8.0.16.feh6t7aoiq.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,7 +147,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.16\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
@@ -166,7 +166,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.16\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Four.pdb",
@@ -223,7 +223,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.16\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
@@ -242,7 +242,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.16\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
@@ -261,7 +261,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.16\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.wasm",
@@ -4482,6 +4482,25 @@
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Security.Cryptography.Encoding.wasm"
     },
     {
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\4ywpidncaf.gz",
+      "SourceId": "Four",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
+    },
+    {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\50hl3j1uim.gz",
       "SourceId": "Four",
       "SourceType": "Computed",
@@ -4881,6 +4900,25 @@
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Text.Json.wasm"
     },
     {
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\79ne4v5ts3.gz",
+      "SourceId": "Four",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
+    },
+    {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\7brh8e2zgf.gz",
       "SourceId": "Four",
       "SourceType": "Computed",
@@ -4974,6 +5012,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Collections.NonGeneric.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\84h5yy5sn2.gz",
+      "SourceId": "Four",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\8b39klr6ne.gz",
@@ -5088,25 +5145,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Xml.XDocument.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\97hi59hs9w.gz",
-      "SourceId": "Four",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\9cdyxm17vb.gz",
@@ -5242,6 +5280,25 @@
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Reflection.TypeExtensions.wasm"
     },
     {
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\agm8ieibnl.gz",
+      "SourceId": "Four",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
+    },
+    {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\bqxbverq1i.gz",
       "SourceId": "Four",
       "SourceType": "Computed",
@@ -5337,25 +5394,6 @@
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.VisualBasic.Core.wasm"
     },
     {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\c6dto6gv29.gz",
-      "SourceId": "Four",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.2.c6dto6gv29.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.2.c6dto6gv29.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.2.c6dto6gv29.js"
-    },
-    {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\cvb97ad1rv.gz",
       "SourceId": "Four",
       "SourceType": "Computed",
@@ -5430,25 +5468,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.FileSystemGlobbing.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\d2kfb66bdp.gz",
-      "SourceId": "Four",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\da6s1whjt7.gz",
@@ -5734,6 +5753,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.FileProviders.Physical.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\feh6t7aoiq.gz",
+      "SourceId": "Four",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.8.0.16.feh6t7aoiq.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.16.feh6t7aoiq.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.16.feh6t7aoiq.js"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\fveyapdap7.gz",
@@ -6135,6 +6173,25 @@
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Runtime.Extensions.wasm"
     },
     {
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\jo2xizczsd.gz",
+      "SourceId": "Four",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.8.0.16.jo2xizczsd.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.16.jo2xizczsd.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.16.jo2xizczsd.js"
+    },
+    {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\josb1w5ydx.gz",
       "SourceId": "Four",
       "SourceType": "Computed",
@@ -6209,25 +6266,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Globalization.Extensions.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\kj56f2p9po.gz",
-      "SourceId": "Four",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.wasm.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\kjpbekrcq6.gz",
@@ -6456,25 +6494,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\netstandard.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\nxaavpqkic.gz",
-      "SourceId": "Four",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\oaefodsxh8.gz",
@@ -6781,25 +6800,6 @@
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Text.RegularExpressions.wasm"
     },
     {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\rnlrs5xpmm.gz",
-      "SourceId": "Four",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
-    },
-    {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\rs1sq8oqpp.gz",
       "SourceId": "Four",
       "SourceType": "Computed",
@@ -6874,6 +6874,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Reflection.DispatchProxy.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\sogcgk20ed.gz",
+      "SourceId": "Four",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\svncjhz84p.gz",
@@ -7047,6 +7066,25 @@
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Xml.ReaderWriter.wasm"
     },
     {
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\uhmo1fg7hv.gz",
+      "SourceId": "Four",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat"
+    },
+    {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\uqwtaiwcum.gz",
       "SourceId": "Four",
       "SourceType": "Computed",
@@ -7102,25 +7140,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Net.Sockets.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\v209cko84y.gz",
-      "SourceId": "Four",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\v7o9v34b85.gz",
@@ -7294,23 +7313,23 @@
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Collections.wasm"
     },
     {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\wa1l7ienkd.gz",
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\ws36w5rshv.gz",
       "SourceId": "Four",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/icudt_CJK.dat.gz",
+      "RelativePath": "_framework/dotnet.js.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
+      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
+      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\x01ho5nq7t.gz",
@@ -7406,25 +7425,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Security.Cryptography.Cng.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\x9gq6vi1pu.gz",
-      "SourceId": "Four",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.2.x9gq6vi1pu.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.2.x9gq6vi1pu.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.2.x9gq6vi1pu.js"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\obj\\Debug\\net8.0\\compressed\\x9syvzonbn.gz",
@@ -8052,6 +8052,25 @@
       "CopyToOutputDirectory": "Always",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\mqtt.js"
+    },
+    {
+      "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\PizzaThierryF.png",
+      "SourceId": "Four",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "PizzaThierryF.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PizzaThierryF.png"
     },
     {
       "Identity": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\sample-data\\weather.json",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TIh7DXMG5lIR8sHQVtPIVFGdmaHsU7+Ks/1z/eE7sDmhEf3+ly47l3yIdP8Knf2bFrT4Acl/P05965uSD/VxbA==",
+  "dgSpecHash": "mAdF7QoDPgx6bftj86Bl6dMx+xD1hWYC9rFvhppCuAYYn/sUTkskka9Di4/1Jl6NtbO5tGzcHIbcDCeyHuZ39A==",
   "success": true,
   "projectFilePath": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\Four.csproj",
   "expectedPackageFiles": [
@@ -29,11 +29,10 @@
     "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.jsinterop\\8.0.2\\microsoft.jsinterop.8.0.2.nupkg.sha512",
     "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.jsinterop.webassembly\\8.0.2\\microsoft.jsinterop.webassembly.8.0.2.nupkg.sha512",
     "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.2\\microsoft.net.illink.tasks.8.0.2.nupkg.sha512",
-    "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\8.0.2\\microsoft.net.sdk.webassembly.pack.8.0.2.nupkg.sha512",
+    "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\8.0.16\\microsoft.net.sdk.webassembly.pack.8.0.16.nupkg.sha512",
     "C:\\Users\\mdoul\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
     "C:\\Users\\mdoul\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
-    "C:\\Users\\mdoul\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
-    "C:\\Users\\mdoul\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.2\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.2.nupkg.sha512"
+    "C:\\Users\\mdoul\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

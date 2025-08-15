@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\service-worker.js"
     },
     {
+      "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\PizzaThierryF.png",
+      "PackagePath": "staticwebassets\\PizzaThierryF.png"
+    },
+    {
       "Id": "C:\\Users\\mdoul\\Desktop\\GIT\\Four\\Sup\\Pilotage Four Pizza thierry c#\\WebAppFour\\Blazzor\\WebAppFour\\Four\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },

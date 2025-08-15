@@ -2,31 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <!-- Viewport responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Pizza Thierry</title>
-    <base href="/WebAppFour/" />
 
-    <!-- CSS Bootstrap & app -->
+    <!-- ✅ base href dynamique (injection fiable) -->
+    <script>
+        const base = document.createElement('base');
+        base.href = window.location.pathname.toLowerCase().includes("/webappfour/") ? "/WebAppFour/" : "/";
+        document.head.appendChild(base);
+    </script>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="Four.styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
-          rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+
+    <!-- PWA / Manifest -->
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="icon" type="image/png" href="PizzaThierryF.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="PizzaThierryF.png" />
 
     <style>
-        /* Host Blazor en pleine page (sans centrer) */
         html, body, #app {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            background-color: #121212; /* ← gris foncé style Uber */
+            background-color: #121212;
             color: #fff;
         }
 
-        /* Splash plein écran */
         #splash {
             position: fixed;
             top: 0;
@@ -37,7 +44,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: #121212; /* ← même gris pour le splash */
+            background-color: #121212;
             z-index: 9999;
         }
 
@@ -96,15 +103,9 @@
             word-break: break-word;
         }
     </style>
-
-    <!-- PWA manifest & icônes -->
-    <link rel="manifest" href="manifest.webmanifest" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <link rel="icon" type="image/png" href="PizzaThierryF.png" />
-    <link rel="apple-touch-icon" sizes="512x512" href="PizzaThierryF.png" />
 </head>
 <body>
-    <!-- Écran de splash -->
+    <!-- Splash loading -->
     <div id="splash">
         <svg class="loading-progress" viewBox="0 0 100 100">
             <circle r="40%" cx="50%" cy="50%" />
@@ -113,29 +114,35 @@
         <div class="splash-text">Pizza Thierry</div>
     </div>
 
-    <!-- Hôte Blazor -->
+    <!-- Blazor mount point -->
     <div id="app"></div>
 
-    <!-- UI d’erreur Blazor -->
+    <!-- Error UI -->
     <div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
 
-    <!-- Service Worker -->
-    <script>navigator.serviceWorker.register('service-worker.js');</script>
+    <!-- ✅ Service Worker dynamique -->
+    <script>
+        const path = window.location.pathname.toLowerCase();
+        const swPath = path.includes("/webappfour/") ? "/WebAppFour/service-worker.js" : "service-worker.js";
+        navigator.serviceWorker.register(swPath);
+    </script>
 
-    <!-- MQTT -->
+    <!-- ✅ MQTT -->
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <script src="mqtt.js"></script>
 
-    <!-- Blazor WebAssembly (démarrage manuel) -->
-    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+    <!-- ✅ Blazor auto-load -->
+    <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- ✅ Splash suppression après chargement -->
     <script>
-        Blazor.start().then(() => {
+        window.addEventListener('load', () => {
             const splash = document.getElementById('splash');
-            if (splash) { splash.remove(); }
+            if (splash) splash.remove();
         });
     </script>
 </body>
