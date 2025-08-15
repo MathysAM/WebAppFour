@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Thierry</title>
+
+    <!-- ✅ base href dynamique (injection fiable) -->
+    <script>
+        const base = document.createElement('base');
+        base.href = window.location.pathname.toLowerCase().includes("/webappfour/") ? "/WebAppFour/" : "/";
+        document.head.appendChild(base);
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="Four.styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+
+    <!-- PWA / Manifest -->
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="icon" type="image/png" href="PizzaThierryF.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="PizzaThierryF.png" />
+
+    <style>
+        html, body, #app {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #121212;
+            color: #fff;
+        }
+
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #121212;
+            z-index: 9999;
+        }
+
+        .loading-progress {
+            width: 80px;
+            height: 80px;
+            animation: rotate 2s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+            .loading-progress circle {
+                fill: none;
+                stroke-width: 4;
+            }
+
+                .loading-progress circle:nth-child(1) {
+                    stroke: rgba(255,255,255,0.25);
+                }
+
+                .loading-progress circle:nth-child(2) {
+                    stroke: #fff;
+                    stroke-linecap: round;
+                    stroke-dasharray: 283;
+                    stroke-dashoffset: 75;
+                    animation: dash 1.5s ease-in-out infinite;
+                }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dashoffset: 283;
+            }
+
+            50% {
+                stroke-dashoffset: 75;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                stroke-dashoffset: 283;
+                transform: rotate(360deg);
+            }
+        }
+
+        .splash-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-align: center;
+            padding: 0 1rem;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash loading -->
+    <div id="splash">
+        <svg class="loading-progress" viewBox="0 0 100 100">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="splash-text">Pizza Thierry</div>
+    </div>
+
+    <!-- Blazor mount point -->
+    <div id="app"></div>
+
+    <!-- Error UI -->
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <!-- ✅ Service Worker dynamique -->
+    <script>
+        const path = window.location.pathname.toLowerCase();
+        const swPath = path.includes("/webappfour/") ? "/WebAppFour/service-worker.js" : "service-worker.js";
+        navigator.serviceWorker.register(swPath);
+    </script>
+
+    <!-- ✅ MQTT -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script src="mqtt.js"></script>
+
+    <!-- ✅ Blazor auto-load -->
+    <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- ✅ Splash suppression après chargement -->
+    <script>
+        window.addEventListener('load', () => {
+            const splash = document.getElementById('splash');
+            if (splash) splash.remove();
+        });
+    </script>
+</body>
+</html>
