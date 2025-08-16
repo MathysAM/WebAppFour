@@ -1,6 +1,8 @@
 ﻿@page "/counter"
 @inject IJSRuntime JS
 @using System.Globalization
+@using Microsoft.JSInterop
+@implements IAsyncDisposable
 
 <PageTitle>Counter</PageTitle>
 
@@ -28,6 +30,43 @@
 @code {
     private string consigneRaw = "";
     private string? consigneError;
+    // Référence .NET pour les callbacks JS -> .NET
+    private DotNetObjectReference<Counter>? _selfRef; // remplace "Counter" par le nom réel du composant
+    private bool _consigneSubscribed;                 // simple garde-fou
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (!_consigneSubscribed)
+            {
+                _selfRef = DotNetObjectReference.Create(this);
+                await JS.InvokeVoidAsync(
+                    "subscribeToMqtt",
+                    "/Sup/ConsigneTemperture",   // ⚠ corrigé
+                    _selfRef,
+                    nameof(SetConsigneFromMqtt));
+
+                _consigneSubscribed = true;
+            }
+        }
+        catch (JSException ex)
+        {
+            Console.WriteLine($"[JS Error] {ex.Message}");
+        }
+    }
+
+    [JSInvokable]
+    public async Task SetConsigneFromMqtt(string payload)
+    {
+        // Normalise toujours à 2 décimales (accepte "." et ",")
+        if (TryParseTwoDecimals(payload, out var formatted, out _))
+        {
+            consigneRaw = formatted;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
 
     private async Task PublishStart()
     {
@@ -83,5 +122,15 @@
 
         formatted = value.ToString("0.00", CultureInfo.InvariantCulture); // impose deux décimales
         return true;
+    }
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            if (_consigneSubscribed)
+                await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/Sup/ConsigneTemperture");
+        }
+        catch { /* best effort */ }
+        _selfRef?.Dispose();
     }
 }
