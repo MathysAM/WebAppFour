@@ -41,13 +41,15 @@
             if (!_consigneSubscribed)
             {
                 _selfRef = DotNetObjectReference.Create(this);
-                await JS.InvokeVoidAsync(
-                    "subscribeToMqtt",
-                    "/Sup/ConsigneTemperture",   // ⚠ corrigé
-                    _selfRef,
-                    nameof(SetConsigneFromMqtt));
-
+                await JS.InvokeVoidAsync("subscribeToMqtt", "/Sup/ConsigneTemperture", _selfRef, nameof(SetConsigneFromMqtt), 0 ); // 👈 ajout : index obligatoire pour ton JS
                 _consigneSubscribed = true;
+    
+    
+  
+    
+   
+
+                
             }
         }
         catch (JSException ex)
@@ -57,10 +59,11 @@
     }
 
     [JSInvokable]
-    public async Task SetConsigneFromMqtt(string payload)
+    
+    public async Task SetConsigneFromMqtt(string payload, int index) // ← renommé
     {
-        // Normalise toujours à 2 décimales (accepte "." et ",")
-        if (TryParseTwoDecimals(payload, out var formatted, out _))
+        var s = (payload ?? "").Trim();
+        if (TryParseTwoDecimals(s, out var formatted, out _)) // ← maintenant _ est un discard valide
         {
             consigneRaw = formatted;
             await InvokeAsync(StateHasChanged);
