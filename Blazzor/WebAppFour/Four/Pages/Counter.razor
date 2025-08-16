@@ -22,6 +22,22 @@
 <button class="btn btn-primary me-3" @onclick="PublishConsigne">
     📡 Publier consigne
 </button>
+<div class="mb-3">
+    <label class="form-label">Température max</label>
+    <input class="form-control"
+           placeholder="ex: 80.00"
+           @bind="tempMaxRaw"
+           @bind:event="oninput"
+           @onblur="FormatTempMax" />
+    @if (!string.IsNullOrEmpty(tempMaxError))
+    {
+        <div class="text-danger small mt-1">@tempMaxError</div>
+    }
+</div>
+
+<button class="btn btn-secondary me-3" @onclick="PublishTempMax">
+    📡 Publier température max
+</button>
 
 <button class="btn btn-success me-2" @onclick="PublishStart">▶️ Start</button>
 <button class="btn btn-danger" @onclick="PublishStop">⏹️ Stop  </button>
@@ -31,6 +47,8 @@
 
 
 @code {
+    private string tempMaxRaw = "";
+    private string? tempMaxError;
     private string temperatureText = "—";
     private string reguleEtatText = "—";
     private string fourEtatText = "—";
@@ -52,6 +70,7 @@
                 await JS.InvokeVoidAsync("subscribeToMqtt", "/automate/ReguleEtat", _selfRef, nameof(SetReguleEtat), 0);
                 await JS.InvokeVoidAsync("subscribeToMqtt", "/automate/EtatFour", _selfRef, nameof(SetFourEtat), 0);
                 await JS.InvokeVoidAsync("subscribeToMqtt", "/automate/temperature", _selfRef, nameof(SetTemperature), 0);
+                await JS.InvokeVoidAsync("subscribeToMqtt", "/Sup/TemperatureMax", _selfRef, nameof(SetTemperatureMaxFromMqtt), 0);
 
     
   
@@ -64,6 +83,22 @@
         catch (JSException ex)
         {
             Console.WriteLine($"[JS Error] {ex.Message}");
+        }
+    }
+    [JSInvokable]
+    public async Task SetTemperatureMaxFromMqtt(string payload, int index)
+    {
+        var s = (payload ?? "").Trim();
+        if (TryParseTwoDecimals(s, out var formatted, out _))
+        {
+            tempMaxRaw = formatted;
+            await InvokeAsync(StateHasChanged);
+        }
+        else
+        {
+            // on peut afficher une erreur si tu veux, sinon on ignore
+            tempMaxError = "Valeur invalide (ex: 80.00)";
+            await InvokeAsync(StateHasChanged);
         }
     }
     [JSInvokable]
@@ -126,7 +161,18 @@
     {
         await JS.InvokeVoidAsync("publishMomentary", "/Sup/Stop");
     }
+    private async Task PublishTempMax()
+    {
+        if (!TryParseTwoDecimals(tempMaxRaw, out var formatted, out var err))
+        {
+            tempMaxError = err;
+            return;
+        }
 
+        tempMaxError = null;
+        await JS.InvokeVoidAsync("publishMqttValue", "/Sup/TemperatureMax", formatted);
+        tempMaxRaw = formatted;
+    }
     private async Task PublishConsigne()
     {
         if (!TryParseTwoDecimals(consigneRaw, out var formatted, out var err))
@@ -139,7 +185,19 @@
         await JS.InvokeVoidAsync("publishMqttValue", "/Sup/ConsigneTemperture", formatted);
         consigneRaw = formatted;
     }
-
+    private Task FormatTempMax(FocusEventArgs _)
+    {
+        if (TryParseTwoDecimals(tempMaxRaw, out var formatted, out var err))
+        {
+            tempMaxRaw = formatted;
+            tempMaxError = null;
+        }
+        else
+        {
+            tempMaxError = err;
+        }
+        return Task.CompletedTask;
+    }
     private Task FormatConsigne(FocusEventArgs _)
     {
         if (TryParseTwoDecimals(consigneRaw, out var formatted, out var err))
@@ -182,6 +240,7 @@
             await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/automate/ReguleEtat");
             await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/automate/EtatFour");
             await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/automate/temperature");
+            await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/Sup/TemperatureMax");
 
         }
         catch { /* best effort */ }

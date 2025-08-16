@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Four",
   "resources": {
-    "hash": "sha256-ilcMWbSaoGOZdVbOwqpPl+gKjlhFPRjsYaGLGzEIarQ=",
+    "hash": "sha256-ZuayForvsre/EUYcSgS/trdRXn797qGX/u6WRjLVSOI=",
     "jsModuleNative": {
       "dotnet.native.8.0.16.jo2xizczsd.js": "sha256-RiGT44TFZmHOY+Oqvb8o8r+BJVWex6+dPxFxrOiWvFY="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-Im6xq+lOse4P/VnAyrA3hwPstV67V5dB0EwQWcjipyE=",
       "netstandard.wasm": "sha256-PK0GLtj6kQVtZPzq0FZlnSdHh7geujg80LqKdJXA4pI=",
       "System.Private.CoreLib.wasm": "sha256-gEwccs7GbRSPGmeWBOKxNroYfyM+mZ7hqbP3ki1iwX0=",
-      "Four.wasm": "sha256-RYElzQCaRQptik2NAV4mouDFcaBrPUByuGutemCV0/k="
+      "Four.wasm": "sha256-0oHmwKDgY8/+fN71tEXZSu37K/5g7xTpOQc2B4JSoEs="
     },
     "pdb": {
-      "Four.pdb": "sha256-6zuYZUyo00bEvJWGoFJHAgHNBy0Hzee+QaEs0MEOH+g="
+      "Four.pdb": "sha256-WxhZTIsBqtCgVOc5+UIsiNtUweUSsaFmW1373Y1gQM0="
     }
   },
   "cacheBootResources": true,
