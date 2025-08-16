@@ -45,12 +45,12 @@
       "url": "sample-data\/weather.json"
     },
     {
-      "hash": "sha256-eagwPCP2FdZHZ5LMwEag5k+D+SnwgurXaOHXtXUobAM=",
-      "url": "Four.styles.css"
-    },
-    {
       "hash": "sha256-k8NfwuwCCeOoFCP+4FuP9FeUzGyohHbIWvOxkXEPg\/w=",
       "url": "_framework\/blazor.webassembly.js"
+    },
+    {
+      "hash": "sha256-eagwPCP2FdZHZ5LMwEag5k+D+SnwgurXaOHXtXUobAM=",
+      "url": "Four.styles.css"
     },
     {
       "hash": "sha256-xpsdU9uDJz5t2\/e+ZH5CkB8nfZeCmSo9PqwquQX4B2U=",

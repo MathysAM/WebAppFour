@@ -27,9 +27,11 @@
 <button class="btn btn-danger" @onclick="PublishStop">⏹️ Stop  </button>
 <div class="mb-2"><strong>Régulation :</strong> @reguleEtatText</div>
 <div class="mb-3"><strong>Four :</strong> @fourEtatText</div>
+<div class="mb-3"><strong>Température :</strong> @temperatureText</div>
 
 
 @code {
+    private string temperatureText = "—";
     private string reguleEtatText = "—";
     private string fourEtatText = "—";
     private string consigneRaw = "";
@@ -49,7 +51,8 @@
                 _consigneSubscribed = true;
                 await JS.InvokeVoidAsync("subscribeToMqtt", "/automate/ReguleEtat", _selfRef, nameof(SetReguleEtat), 0);
                 await JS.InvokeVoidAsync("subscribeToMqtt", "/automate/EtatFour", _selfRef, nameof(SetFourEtat), 0);
-    
+                await JS.InvokeVoidAsync("subscribeToMqtt", "/automate/temperature", _selfRef, nameof(SetTemperature), 0);
+
     
   
     
@@ -63,7 +66,21 @@
             Console.WriteLine($"[JS Error] {ex.Message}");
         }
     }
-
+    [JSInvokable]
+    public async Task SetTemperature(string payload, int index)
+    {
+        var s = (payload ?? "").Trim();
+        if (double.TryParse(s, NumberStyles.Float, CultureInfo.InvariantCulture, out var value) ||
+            double.TryParse(s, NumberStyles.Float, CultureInfo.GetCultureInfo("fr-FR"), out value))
+        {
+            temperatureText = $"{value:0.00} °C";
+        }
+        else
+        {
+            temperatureText = "Valeur invalide";
+        }
+        await InvokeAsync(StateHasChanged);
+    }
     [JSInvokable]
     public async Task SetReguleEtat(string payload, int index)
     {
@@ -164,6 +181,7 @@
 
             await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/automate/ReguleEtat");
             await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/automate/EtatFour");
+            await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/automate/temperature");
 
         }
         catch { /* best effort */ }
