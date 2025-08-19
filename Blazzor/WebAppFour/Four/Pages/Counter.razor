@@ -43,10 +43,12 @@
 <button class="btn btn-danger" @onclick="PublishStop">⏹️ Stop  </button>
 <div class="mb-2"><strong>Régulation :</strong> @reguleEtatText</div>
 <div class="mb-3"><strong>Four :</strong> @fourEtatText</div>
+<div class="mb-3"><strong>Mode :</strong> @modeText</div>
 <div class="mb-3"><strong>Température :</strong> @temperatureText</div>
 
 
 @code {
+    private string modeText = "—";
     private string tempMaxRaw = "";
     private string? tempMaxError;
     private string temperatureText = "—";
@@ -71,6 +73,8 @@
                 await JS.InvokeVoidAsync("subscribeToMqtt", "/automate/EtatFour", _selfRef, nameof(SetFourEtat), 0);
                 await JS.InvokeVoidAsync("subscribeToMqtt", "/automate/temperature", _selfRef, nameof(SetTemperature), 0);
                 await JS.InvokeVoidAsync("subscribeToMqtt", "/Sup/TemperatureMax", _selfRef, nameof(SetTemperatureMaxFromMqtt), 0);
+                await JS.InvokeVoidAsync("subscribeToMqtt", "/automate/ModeRL", _selfRef, nameof(SetModeRL), 0);
+
 
     
   
@@ -85,6 +89,15 @@
             Console.WriteLine($"[JS Error] {ex.Message}");
         }
     }
+
+    [JSInvokable]
+    public async Task SetModeRL(string payload, int index)
+    {
+        var b = ParseMqttBool(payload);               // true/false ou 1/0
+        modeText = b ? "Mode local" : "Mode distant"; // true → local, false → distant
+        await InvokeAsync(StateHasChanged);
+    }
+
     [JSInvokable]
     public async Task SetTemperatureMaxFromMqtt(string payload, int index)
     {
@@ -241,6 +254,8 @@
             await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/automate/EtatFour");
             await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/automate/temperature");
             await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/Sup/TemperatureMax");
+            await JS.InvokeVoidAsync("unsubscribeFromMqtt", "/automate/ModeRL");
+
 
         }
         catch { /* best effort */ }
